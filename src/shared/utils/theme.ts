@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
+// Tworzenie motywu
 const theme = createTheme({
   palette: {
     primary: {
@@ -26,143 +27,60 @@ const theme = createTheme({
     },
   },
   typography: {
-    pageTittle: {
+    h1: {
       fontSize: "48px",
       lineHeight: 1.5,
       fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
       color: "#2c1b14",
-      "@media (max-width: 768px)": {
-        fontSize: "32px",
+    },
+    h2: {
+      fontSize: "36px",
+      fontWeight: 500,
+      lineHeight: 1.4,
+    },
+  },
+  variables: {
+    sidebarWidth: "240px",
+    headerHeight: "64px",
+    input: {
+      height: {
+        small: "32px",
+        medium: "40px",
+        large: "48px",
+      },
+      padding: {
+        small: "8px",
+        medium: "12px",
+        large: "16px",
       },
     },
-    recipesBarTittle: {
-      fontSize: "24px",
-      lineHeight: 1.5,
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      marginTop: "10px",
-      marginBottom: "8px",
-      "@media (max-width: 768px)": {
-        fontSize: "16px",
+    button: {
+      height: {
+        small: "32px",
+        medium: "40px",
+        large: "48px",
+      },
+      padding: {
+        small: "8px 16px",
+        medium: "12px 24px",
+        large: "16px 32px",
+      },
+      fontSize: {
+        small: "14px",
+        medium: "16px",
+        large: "18px",
       },
     },
-    recipeTittle: {
-      marginRight: "14px",
-      fontSize: "32px",
-      lineHeight: 1.5,
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "24px",
-      },
-    },
-    ingredientsTittle: {
-      fontSize: "24px",
-      lineHeight: 1.5,
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "18px",
-      },
-    },
-    allergens: {
-      fontSize: "14px",
-      lineHeight: "30px",
-      fontWeight: 400,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#ff0000",
-      "@media (max-width:  480px)": {
-        fontSize: "12px",
-      },
-    },
-    recipeSteps: {
-      fontSize: "20px",
-      lineHeight: "30px",
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width: 480px)": {
-        fontSize: "16px",
-      },
-    },
-    stepsCounter: {
-      fontSize: "20px",
-      lineHeight: "30px",
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "16px",
-      },
-    },
-    formSection: {
-      fontSize: "20px",
-      lineHeight: "30px",
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "22px",
-      },
-    },
-    formErrorMessage: {
-      fontSize: "12px",
-      lineHeight: "16px",
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "10px",
-      },
-    },
-    fontFamily: `"Poppins", sans-serif`,
   },
   components: {
     MuiListItemText: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          ...theme.typography.recipeSteps,
-        }),
-      },
-    },
-    MuiListItemIcon: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          ...theme.typography.stepsCounter,
-        }),
-      },
-    },
-    MuiDivider: {
-      variants: [
-        {
-          props: { variant: "custom" },
-          style: {
-            borderColor: "#8f5a3c",
-            borderWidth: "1px",
-            borderStyle: "solid",
-            marginBottom: "16px",
-          },
+        primary: {
+          fontWeight: 500,
         },
-      ],
-    },
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          "& .MuiOutlinedInput-root": {
-            backgroundColor: "#f5ece1", // Set background color
-            "&.Mui-disabled": {
-              backgroundColor: "#e7d9c4", // Lighter background for disabled
-            },
-            "& fieldset": {
-              borderColor: "#d4c4a8", // Border color for normal state
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "#4b2e1c", // Border color when focused
-            },
-          },
+        secondary: {
+          fontSize: "14px",
+          color: "#757575",
         },
       },
     },

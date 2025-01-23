@@ -60,14 +60,6 @@ declare module "@mui/material/" {
 }
 
 declare module "@mui/material/styles" {
-  interface TypographyVariants {
-    label: React.CSSProperties;
-  }
-
-  interface TypographyVariantsOptions {
-    label?: React.CSSProperties;
-  }
-
   interface Theme {
     variables: {
       sidebarWidth: string;
@@ -94,6 +86,7 @@ declare module "@mui/material/styles" {
       };
       button: {
         height: Record<string, string | number>;
+        padding: Record<string, string | number>;
         fontSize: Record<string, string | number>;
       };
     };
@@ -131,21 +124,6 @@ declare module "@mui/material/styles" {
   interface Palette {
     primary: Record<number, string>;
     secondary: Record<number, string>;
-  }
-}
-
-declare module "@mui/material/Button" {
-  export interface ButtonPropsSizeOverrides {
-    xLarge: true;
-  }
-  export interface ButtonPropsVariantOverrides {
-    "outlined-secondary": true;
-  }
-}
-
-declare module "@mui/material/TextField" {
-  interface TextFieldPropsSizeOverrides {
-    large: true;
   }
 }
 
