@@ -1,7 +1,8 @@
 import { Ingredient } from "./Ingredient";
-import { Step } from "./step.ts";
+import { Step } from "./Step.ts";
 
 export interface Recipe {
+  id: number;
   title: string;
   ingredients: Ingredient[];
   cookingSteps: Step[];

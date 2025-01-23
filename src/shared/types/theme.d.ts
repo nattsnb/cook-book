@@ -1,7 +1,7 @@
 import "@mui/material/styles";
 import "@mui/material/Typography";
-import { PropTypes } from "@mui/material";
 import Color = PropTypes.Color;
+import PropTypes from "prop-types";
 
 type ColorPartial = Partial<Color>;
 
