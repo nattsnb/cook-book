@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { IsEditModeOnContext } from "../../App.tsx";
 import { EntryForm } from "../EntryForm";
 import { RecipeDetails } from "../RecipeDetails";
-import { IsEditModeOnContextType } from "../../shared/types/IsEditModeOnContextType.ts";
+import {RecipeContextType} from "../../shared/types/RecipeContextType.ts";
+import {RecipeContext} from "../../App.tsx";
 
 export function RecipeCard() {
-  const isEditeModeOn: IsEditModeOnContextType =
-    useContext(IsEditModeOnContext);
-  return <div>{isEditeModeOn ? <EntryForm /> : <RecipeDetails />}</div>;
+  const {
+    isEditModeOn
+  } = useContext<RecipeContextType>(RecipeContext)
+  return <div>{isEditModeOn ? <EntryForm /> : <RecipeDetails />}</div>;
 }

@@ -4,38 +4,25 @@ import { Layout } from "./components/Layout";
 import { MobileView } from "./pages/MobileView";
 import { DesktopView } from "./pages/DesktopView";
 import { createContext, useState } from "react";
-import { ActiveRecipeContextType } from "./shared/types/ActiveRecipeContextType.ts";
-import { IsEditModeOnContextType } from "./shared/types/IsEditModeOnContextType.ts";
+import { RecipeContextType } from "./shared/types/RecipeContextType.ts";
 
-export const ActiveRecipeContext =
-  createContext<ActiveRecipeContextType | null>(null);
-export const IsEditModeOnContext = createContext<IsEditModeOnContextType>({
-  isEditModeOn: true,
-});
+export const RecipeContext = createContext<RecipeContextType>({});
 
 function App() {
-  const [activeRecipe, setActiveRecipe] = useState<ActiveRecipeContextType>({
-    activeRecipeId: null,
-  });
-  const [isEditeModeOn, setIsEditeModeOn] = useState<IsEditModeOnContextType>({
-    isEditModeOn: true,
-  });
+  const [activeRecipeId, setActiveRecipeId] = useState<number | null>(null);
+  const [isEditModeOn, setIsEditModeOn] = useState<boolean>(true);
 
   const isViewportSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
 
 
-  console.log(setActiveRecipe, setIsEditeModeOn);
-
   return (
-    <ActiveRecipeContext.Provider value={activeRecipe}>
-      <IsEditModeOnContext.Provider value={isEditeModeOn}>
-        <ThemeProvider theme={theme}>
-          <Layout>
-            {isViewportSmallerThanMd ? <MobileView /> : <DesktopView />}
-          </Layout>
-        </ThemeProvider>
-      </IsEditModeOnContext.Provider>
-    </ActiveRecipeContext.Provider>
+    <RecipeContext.Provider value={{ activeRecipeId, setActiveRecipeId, isEditModeOn, setIsEditModeOn }}>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          {isViewportSmallerThanMd ? <MobileView /> : <DesktopView />}
+        </Layout>
+      </ThemeProvider>
+    </RecipeContext.Provider>
   );
 }
 

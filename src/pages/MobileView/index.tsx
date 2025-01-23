@@ -1,17 +1,18 @@
 import { RecipesList } from "../../components/RecipesList";
 import { useContext } from "react";
-import { ActiveRecipeContext } from "../../App.tsx";
 import { EntryForm } from "../../components/EntryForm";
 import { RecipeCard } from "../../components/RecipeCard";
-import { ActiveRecipeContextType } from "../../shared/types/ActiveRecipeContextType.ts";
+import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
+import {RecipeContext} from "../../App.tsx";
 
 export function MobileView() {
-  const activeRecipe: ActiveRecipeContextType | null =
-    useContext(ActiveRecipeContext);
+  const {
+    activeRecipeId
+  } = useContext<RecipeContextType>(RecipeContext)
   return (
     <div>
       <RecipesList />
-      {activeRecipe ? <RecipeCard /> : <EntryForm />}
+      {activeRecipeId ? <RecipeCard /> : <EntryForm />}
     </div>
   );
 }
