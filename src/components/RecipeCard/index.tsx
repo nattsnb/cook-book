@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { EntryForm } from "../EntryForm";
+import { EntryForm } from "../RecipeForm";
 import { RecipeDetails } from "../RecipeDetails";
 import {RecipeContextType} from "../../shared/types/RecipeContextType.ts";
 import {RecipeContext} from "../../App.tsx";

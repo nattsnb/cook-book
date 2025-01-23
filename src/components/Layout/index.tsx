@@ -1,11 +1,8 @@
 import { Banner } from "../Banner";
 import { Footer } from "../Footer";
+import {PropsWithChildren} from "react";
 
-interface LayoutProps {
-  children: unknown;
-}
-
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children }: PropsWithChildren) {
   return (
     <>
       <Banner />

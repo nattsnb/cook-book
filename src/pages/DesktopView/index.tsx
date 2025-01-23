@@ -1,6 +1,6 @@
 import { RecipesList } from "../../components/RecipesList";
 import { useContext } from "react";
-import { EntryForm } from "../../components/EntryForm";
+import { EntryForm } from "../../components/RecipeForm";
 import { RecipeCard } from "../../components/RecipeCard";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
 import {RecipeContext} from "../../App.tsx";
