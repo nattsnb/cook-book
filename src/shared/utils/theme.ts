@@ -31,12 +31,16 @@ const theme = createTheme({
       fontSize: "48px",
       lineHeight: 1.5,
       fontWeight: 600,
-      color: "#2c1b14",
     },
     h2: {
       fontSize: "36px",
       fontWeight: 500,
       lineHeight: 1.4,
+    },
+    h3: {
+      fontSize: "30px",
+      fontWeight: 400,
+      lineHeight: 1.3,
     },
   },
   variables: {

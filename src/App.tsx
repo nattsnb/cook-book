@@ -14,9 +14,15 @@ function App() {
 
   const isViewportSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
 
-
   return (
-    <RecipeContext.Provider value={{ activeRecipeId, setActiveRecipeId, isEditModeOn, setIsEditModeOn }}>
+    <RecipeContext.Provider
+      value={{
+        activeRecipeId,
+        setActiveRecipeId,
+        isEditModeOn,
+        setIsEditModeOn,
+      }}
+    >
       <ThemeProvider theme={theme}>
         <Layout>
           {isViewportSmallerThanMd ? <MobileView /> : <DesktopView />}
