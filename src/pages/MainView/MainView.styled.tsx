@@ -1,5 +1,6 @@
 import { styled } from "@mui/material";
 import kitchenImage from "../../images/banner.png";
+import { ButtonLikeImageLink } from "../../components/ButtonLikeImageLink";
 
 export const StyledKitchenPictureContainer = styled("div")`
   background-image: url(${kitchenImage});
@@ -21,7 +22,47 @@ export const StyledKitchenPictureContainer = styled("div")`
 `;
 
 export const StyledMainBody = styled("div")`
-  background-color: ${({ theme }) => theme.palette.secondary.light};
+  background-color: ${({ theme }) => theme.palette.secondary.main};
   box-shadow: inset 0px 8px 12px rgba(0, 0, 0, 0.4);
   width: 100%;
+`;
+
+export const StyledButtonContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: ${({ theme }) => theme.spacing(20)};
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    padding: ${({ theme }) => theme.spacing(10)};
+  }
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px;
+    justify-content: space-between;
+  }
+`;
+
+export const StyledButtonLikeImageLink = styled(ButtonLikeImageLink)`
+  display: inline-block;
+
+  max-width: 360px;
+
+  ${({ theme }) => theme.breakpoints.down("xl")} {
+    max-width: 350px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    max-width: 300px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    max-width: 350px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    max-width: 280px;
+  }
 `;
