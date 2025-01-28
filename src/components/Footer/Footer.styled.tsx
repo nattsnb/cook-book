@@ -2,6 +2,14 @@ import { Divider, styled, Typography } from "@mui/material";
 
 export const StyledTypographyFooter = styled(Typography)`
   color: ${({ theme }) => theme.palette.primary.contrastText};
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    font-size: 14px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    font-size: 10px;
+  }
 `;
 
 export const StyledFooterContainer = styled("div")`
