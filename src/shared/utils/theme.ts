@@ -16,6 +16,9 @@ const theme = createTheme({
       dark: "#7D4F37",
       contrastText: "#000000",
     },
+    background: {
+      default: "#1A1613",
+    },
   },
   breakpoints: {
     values: {
