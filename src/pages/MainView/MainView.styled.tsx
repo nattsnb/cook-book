@@ -30,17 +30,17 @@ export const StyledMainBody = styled("div")`
 export const StyledButtonContainer = styled("div")`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  padding: ${({ theme }) => theme.spacing(20)};
+  justify-content: space-evenly;
+  padding: ${({ theme }) => theme.spacing(10)};
 
   ${({ theme }) => theme.breakpoints.down("lg")} {
-    padding: ${({ theme }) => theme.spacing(10)};
+    padding: ${({ theme }) => theme.spacing(5)};
   }
 
   ${({ theme }) => theme.breakpoints.down("md")} {
     flex-direction: column;
     align-items: center;
-    min-height: 300px;
+    min-height: 220px;
     justify-content: space-between;
   }
 `;
@@ -64,5 +64,29 @@ export const StyledButtonLikeImageLink = styled(ButtonLikeImageLink)`
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
     max-width: 280px;
+  }
+`;
+
+export const StyledCategoriesContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: ${({ theme }) => theme.spacing(10)};
+  margin-bottom: ${({ theme }) => theme.spacing(5)};
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    padding: ${({ theme }) => theme.spacing(5)};
+  }
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+  }
+`;
+
+export const StyledCategoriesImageLink = styled(ButtonLikeImageLink)`
+  display: inline-block;
+  max-width: 250px;
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    max-width: 200px;
   }
 `;

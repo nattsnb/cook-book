@@ -3,6 +3,9 @@ import {
   StyledTypographyFooter,
   StyledFooterContainer,
   StyledFooterDivider,
+  StyledCircleSmallIcon,
+  StyledCircleLargeIcon,
+  StyledDecorationContainer,
 } from "./Footer.styled.tsx";
 
 export function Footer() {
@@ -10,6 +13,11 @@ export function Footer() {
     <PageWidthContainer>
       <StyledFooterContainer>
         <StyledFooterDivider />
+        <StyledDecorationContainer>
+          <StyledCircleSmallIcon />
+          <StyledCircleLargeIcon />
+          <StyledCircleSmallIcon />
+        </StyledDecorationContainer>
         <StyledTypographyFooter>
           All rights reserved 2025
         </StyledTypographyFooter>

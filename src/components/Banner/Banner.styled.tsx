@@ -1,11 +1,11 @@
 import { styled, Typography } from "@mui/material";
 
 export const StyledTypographyAboveH1 = styled(Typography)`
-  color: ${({ theme }) => theme.palette.primary.contrastText};
+  color: ${({ theme }) => theme.palette.secondary.light};
   font-size: 40px;
   font-weight: bold;
-  font-family: "Playfair Display", serif;
   text-align: center;
+  font-family: "Playfair Display", serif;
 
   ${({ theme }) => theme.breakpoints.down("md")} {
     font-size: 30px;

@@ -37,7 +37,7 @@ const theme = createTheme(baseTheme, {
       fontSize: "60px",
       lineHeight: 1.5,
       fontWeight: 600,
-      color: baseTheme.palette.primary.contrastText,
+      color: baseTheme.palette.secondary.light,
       fontFamily: "'Playfair Display', serif",
       [baseTheme.breakpoints.down("md")]: {
         fontSize: "50px",
