@@ -1,7 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-// Tworzenie motywu
-const theme = createTheme({
+const baseTheme = createTheme({
   palette: {
     primary: {
       light: "#A8D5BA",
@@ -17,9 +16,10 @@ const theme = createTheme({
       contrastText: "#000000",
     },
     background: {
-      default: "#1A1613",
+      default: "#27241A",
     },
   },
+  spacing: 4,
   breakpoints: {
     values: {
       xs: 0,
@@ -29,11 +29,22 @@ const theme = createTheme({
       xl: 1279,
     },
   },
+});
+
+const theme = createTheme(baseTheme, {
   typography: {
     h1: {
-      fontSize: "48px",
+      fontSize: "60px",
       lineHeight: 1.5,
       fontWeight: 600,
+      color: baseTheme.palette.primary.contrastText,
+      fontFamily: "'Playfair Display', serif",
+      [baseTheme.breakpoints.down("md")]: {
+        fontSize: "50px",
+      },
+      [baseTheme.breakpoints.down("sm")]: {
+        fontSize: "40px",
+      },
     },
     h2: {
       fontSize: "36px",

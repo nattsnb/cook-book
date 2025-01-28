@@ -8,6 +8,7 @@ import { MainView } from "./pages/MainView";
 import { CategoryView } from "./pages/CategoryView";
 import { RecipeView } from "./pages/RecipeView";
 import { FormView } from "./pages/FormView";
+import "./playfairDisplay.css";
 
 export const RecipeContext = createContext<RecipeContextType>({});
 

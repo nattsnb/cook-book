@@ -70,7 +70,7 @@ declare module "@mui/material/styles" {
   }
   // allow configuration using `createTheme`
   interface ThemeOptions {
-    variables: {
+    variables?: {
       sidebarWidth: string;
       headerHeight: string;
       input: {

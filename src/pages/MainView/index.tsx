@@ -1,7 +1,16 @@
+import { PageWidthContainer } from "../../shared/components/PageWidthContainer.tsx";
+import {
+  StyledKitchenPictureContainer,
+  StyledMainBody,
+} from "./MainView.styled.tsx";
+
 export function MainView() {
   return (
-    <div>
-      <p>main view placeholder</p>
-    </div>
+    <PageWidthContainer>
+      <StyledKitchenPictureContainer />
+      <StyledMainBody>
+        <p>main view placeholder</p>
+      </StyledMainBody>
+    </PageWidthContainer>
   );
 }
