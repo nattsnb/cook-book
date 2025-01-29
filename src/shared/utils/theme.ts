@@ -33,6 +33,7 @@ const baseTheme = createTheme({
 
 const theme = createTheme(baseTheme, {
   typography: {
+    fontFamily: "Playfair Display, serif",
     h1: {
       fontSize: "60px",
       lineHeight: 1.5,
@@ -50,11 +51,13 @@ const theme = createTheme(baseTheme, {
       fontSize: "36px",
       fontWeight: 500,
       lineHeight: 1.4,
+      fontFamily: "'Playfair Display', serif",
     },
     h3: {
       fontSize: "30px",
       fontWeight: 400,
       lineHeight: 1.3,
+      fontFamily: "'Playfair Display', serif",
     },
   },
   variables: {

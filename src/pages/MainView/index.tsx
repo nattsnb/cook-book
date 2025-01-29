@@ -8,7 +8,7 @@ import {
   StyledMainBody,
 } from "./MainView.styled.tsx";
 import addButton from "../../images/addButton.png";
-import { CATEGORY_BUTTONS } from "../../constans/categoryButtons.ts";
+import { CATEGORIES } from "../../constans/categories.ts";
 
 export function MainView() {
   return (
@@ -23,20 +23,20 @@ export function MainView() {
             className={"StyledFunctionButtonLikeImageLink"}
           />
           <StyledButtonLikeImageLink
-            alt={CATEGORY_BUTTONS[0].alt}
-            href={CATEGORY_BUTTONS[0].href}
-            src={CATEGORY_BUTTONS[0].src}
-            className={CATEGORY_BUTTONS[0].className}
+            alt={CATEGORIES[0].alt}
+            href={CATEGORIES[0].href}
+            src={CATEGORIES[0].src}
+            className={CATEGORIES[0].className}
           />
         </StyledButtonContainer>
         <StyledCategoriesContainer>
-          {CATEGORY_BUTTONS.slice(1).map((categoryButton) => (
+          {CATEGORIES.slice(1).map((category) => (
             <StyledCategoriesImageLink
-              key={categoryButton.id}
-              alt={categoryButton.alt}
-              href={categoryButton.href}
-              src={categoryButton.src}
-              className={categoryButton.className}
+              key={category.id}
+              alt={category.alt}
+              href={category.href}
+              src={category.src}
+              className={category.className}
             />
           ))}
         </StyledCategoriesContainer>
