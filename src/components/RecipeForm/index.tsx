@@ -6,8 +6,19 @@ import {
   StyledFormLineContainer,
   StyledFormContainer,
   StyledNumberInput,
-  StyledLabelAndInputContainer,
+  StyledLabelAndNumberInputContainer,
+  StyledStringInput,
+  StyledLabelAndStringInputContainer,
+  StyledLabelAndSelectContainer,
+  StyledSelect,
+  StyledDeleteButton,
+  StyledForm,
+  StyledFormLineWrapContainer,
 } from "./RecipeForm.styled.tsx";
+
+const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
+
+const RATING: number[] = Array.from({ length: 11 }, (_, i) => i * 0.5);
 
 export function RecipeForm() {
   const { register, handleSubmit, control } = useForm<Recipe>({
@@ -63,98 +74,110 @@ export function RecipeForm() {
     <option key={category.id}>{category.alt}</option>
   ));
 
+  let unitsDropdownItems = UNITS.map((unit, index) => (
+    <option key={index}>{unit}</option>
+  ));
+
+  let ratingDropdownItems = RATING.map((rate, index) => (
+    <option key={index}>{rate}</option>
+  ));
+
   return (
     <StyledFormContainer>
-      <form onSubmit={handleSubmit(handleRecipeFormSubmit)}>
+      <StyledForm onSubmit={handleSubmit(handleRecipeFormSubmit)}>
         <StyledFormLineContainer>
-          <StyledLabelAndInputContainer>
+          <StyledLabelAndNumberInputContainer>
             <label>ID:</label>
             <StyledNumberInput {...register("id")} disabled={true} />
-          </StyledLabelAndInputContainer>
-          <StyledLabelAndInputContainer>
+          </StyledLabelAndNumberInputContainer>
+          <StyledLabelAndStringInputContainer>
             <label>Tittle:</label>
-            <input {...register("title")} />
-          </StyledLabelAndInputContainer>
+            <StyledStringInput {...register("title")} />
+          </StyledLabelAndStringInputContainer>
         </StyledFormLineContainer>
         <StyledFormLineContainer>
-          <StyledLabelAndInputContainer>
+          <StyledLabelAndStringInputContainer>
             <label>Photo URL:</label>
-            <input {...register("photoURL")} />
-          </StyledLabelAndInputContainer>
+            <StyledStringInput {...register("photoURL")} />
+          </StyledLabelAndStringInputContainer>
         </StyledFormLineContainer>
         <StyledFormLineContainer>
-          <StyledLabelAndInputContainer>
+          <StyledLabelAndSelectContainer>
             <label>Choose category:</label>
-            <select {...register("category")}>{categoriesDropdownItems}</select>
-          </StyledLabelAndInputContainer>
+            <StyledSelect {...register("category")}>
+              {categoriesDropdownItems}
+            </StyledSelect>
+          </StyledLabelAndSelectContainer>
         </StyledFormLineContainer>
-        <StyledFormLineContainer>
-          <StyledLabelAndInputContainer>
-            <label>Raiting:</label>
-            <input type="number" {...register("rating")} />
-          </StyledLabelAndInputContainer>
-        </StyledFormLineContainer>
-        <StyledFormLineContainer>
-          <StyledLabelAndInputContainer>
-            <label>Number of portions:</label>
+        <StyledFormLineWrapContainer>
+          <StyledLabelAndSelectContainer>
+            <label>Rating:</label>
+            <StyledSelect {...register("rating")}>
+              {ratingDropdownItems}
+            </StyledSelect>
+          </StyledLabelAndSelectContainer>
+          <StyledLabelAndNumberInputContainer>
+            <label>Portions:</label>
             <StyledNumberInput
               type="number"
               {...register("numberOfPortions")}
             />
-          </StyledLabelAndInputContainer>
-        </StyledFormLineContainer>
-        <StyledFormLineContainer>
-          <StyledLabelAndInputContainer>
+          </StyledLabelAndNumberInputContainer>
+          <StyledLabelAndNumberInputContainer>
             <label>Cooking time:</label>
             <StyledNumberInput
               type="number"
               {...register("cookingTimeInMinutes")}
             />
-            <label>minutes</label>
-          </StyledLabelAndInputContainer>
-        </StyledFormLineContainer>
+          </StyledLabelAndNumberInputContainer>
+          <label>min</label>
+        </StyledFormLineWrapContainer>
         <section>
           <Typography variant="h3">Ingredients</Typography>
           {ingredientFields.map((ingredientField, index) => {
             return (
               <div key={ingredientField.id}>
                 <StyledFormLineContainer>
-                  <StyledLabelAndInputContainer>
+                  <StyledLabelAndNumberInputContainer>
                     <label>ID:</label>
                     <StyledNumberInput {...register("id")} disabled={true} />
-                  </StyledLabelAndInputContainer>
-                  <StyledLabelAndInputContainer>
+                  </StyledLabelAndNumberInputContainer>
+                  <StyledLabelAndStringInputContainer>
                     <label>Name:</label>
-                    <input
+                    <StyledStringInput
                       {...register(`ingredients.${index}.name` as const)}
                     />
-                  </StyledLabelAndInputContainer>
+                  </StyledLabelAndStringInputContainer>
                 </StyledFormLineContainer>
-                <StyledFormLineContainer>
-                  <StyledLabelAndInputContainer>
+                <StyledFormLineWrapContainer>
+                  <StyledLabelAndNumberInputContainer>
                     <label>Amount:</label>
                     <StyledNumberInput
                       {...register(`ingredients.${index}.amount` as const)}
                     />
-                  </StyledLabelAndInputContainer>
-                  <StyledLabelAndInputContainer>
+                  </StyledLabelAndNumberInputContainer>
+                  <StyledLabelAndSelectContainer>
                     <label>Size:</label>
-                    <input
-                      {...register(`ingredients.${index}.unit` as const)}
-                    />
-                  </StyledLabelAndInputContainer>
-                </StyledFormLineContainer>
-                <StyledFormLineContainer>
-                  <StyledLabelAndInputContainer>
+                    <StyledSelect {...register(`ingredients.${index}.unit`)}>
+                      {unitsDropdownItems}
+                    </StyledSelect>
+                  </StyledLabelAndSelectContainer>
+                  <StyledLabelAndSelectContainer>
                     <label>Is allergen:</label>
-                    <input
+                    <StyledSelect
                       {...register(`ingredients.${index}.isAllergen` as const)}
-                    />
-                  </StyledLabelAndInputContainer>
-                  <button type="button" onClick={() => removeIngredient(index)}>
-                    Delete ingredient
-                  </button>
-                </StyledFormLineContainer>
+                    >
+                      <option value="true">True</option>
+                      <option value="false">False</option>
+                    </StyledSelect>
+                  </StyledLabelAndSelectContainer>
+                  <StyledDeleteButton
+                    type="button"
+                    onClick={() => removeIngredient(index)}
+                  >
+                    Delete
+                  </StyledDeleteButton>
+                </StyledFormLineWrapContainer>
                 <StyledFormLineContainer>
                   <button
                     type="button"
@@ -181,35 +204,40 @@ export function RecipeForm() {
             return (
               <div key={stepField.id}>
                 <StyledFormLineContainer>
-                  <StyledLabelAndInputContainer>
+                  <StyledLabelAndNumberInputContainer>
                     <label>ID:</label>
-                    <StyledNumberInput {...register("id")} disabled={true} />
-                  </StyledLabelAndInputContainer>
-                  <StyledLabelAndInputContainer>
+                    <StyledNumberInput
+                      {...register("id")}
+                      disabled={true}
+                    ></StyledNumberInput>
+                  </StyledLabelAndNumberInputContainer>
+                  <StyledLabelAndStringInputContainer>
                     <label>Cooking step:</label>
-                    <input
+                    <textarea
                       {...register(`cookingSteps.${index}.step` as const)}
                     />
-                  </StyledLabelAndInputContainer>
-                  <button type="button" onClick={() => removeStep(index)}>
-                    Delete
-                  </button>
-                </StyledFormLineContainer>
-                <StyledFormLineContainer>
-                  <button
+                  </StyledLabelAndStringInputContainer>
+                  <StyledDeleteButton
                     type="button"
-                    onClick={() => appendStep({ id: 0, step: "" })}
+                    onClick={() => removeStep(index)}
                   >
-                    Add step
-                  </button>
+                    Delete
+                  </StyledDeleteButton>
                 </StyledFormLineContainer>
+                <StyledFormLineContainer></StyledFormLineContainer>
+                <button
+                  type="button"
+                  onClick={() => appendStep({ id: 0, step: "" })}
+                >
+                  Add step
+                </button>
               </div>
             );
           })}
         </section>
 
         <input type="submit" />
-      </form>
+      </StyledForm>
     </StyledFormContainer>
   );
 }
