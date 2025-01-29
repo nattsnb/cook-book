@@ -13,7 +13,7 @@ const baseTheme = createTheme({
       light: "#D4C4A8",
       main: "#CEB78D",
       dark: "#7D4F37",
-      contrastText: "#000000",
+      contrastText: "#FFFFFF",
     },
     background: {
       default: "#27241A",
@@ -54,10 +54,23 @@ const theme = createTheme(baseTheme, {
       fontFamily: "'Playfair Display', serif",
     },
     h3: {
-      fontSize: "30px",
+      fontSize: "45px",
       fontWeight: 400,
       lineHeight: 1.3,
       fontFamily: "'Playfair Display', serif",
+      marginTop: baseTheme.spacing(16),
+      [baseTheme.breakpoints.down("lg")]: {
+        marginTop: baseTheme.spacing(12),
+        fontSize: "38px",
+      },
+      [baseTheme.breakpoints.down("md")]: {
+        marginTop: baseTheme.spacing(10),
+        fontSize: "34px",
+      },
+      [baseTheme.breakpoints.down("sm")]: {
+        marginTop: baseTheme.spacing(8),
+        fontSize: "30px",
+      },
     },
   },
   variables: {

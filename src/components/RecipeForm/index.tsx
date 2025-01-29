@@ -14,6 +14,11 @@ import {
   StyledDeleteButton,
   StyledForm,
   StyledFormLineWrapContainer,
+  StyledDivider,
+  StyledIngerednientEntry,
+  StyledAddButton,
+  AddStepButtonContainer,
+  AddRecipeButtonContainer,
 } from "./RecipeForm.styled.tsx";
 
 const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
@@ -134,72 +139,76 @@ export function RecipeForm() {
         </StyledFormLineWrapContainer>
         <section>
           <Typography variant="h3">Ingredients</Typography>
+          <StyledDivider />
           {ingredientFields.map((ingredientField, index) => {
             return (
               <div key={ingredientField.id}>
-                <StyledFormLineContainer>
-                  <StyledLabelAndNumberInputContainer>
-                    <label>ID:</label>
-                    <StyledNumberInput {...register("id")} disabled={true} />
-                  </StyledLabelAndNumberInputContainer>
-                  <StyledLabelAndStringInputContainer>
-                    <label>Name:</label>
-                    <StyledStringInput
-                      {...register(`ingredients.${index}.name` as const)}
-                    />
-                  </StyledLabelAndStringInputContainer>
-                </StyledFormLineContainer>
-                <StyledFormLineWrapContainer>
-                  <StyledLabelAndNumberInputContainer>
-                    <label>Amount:</label>
-                    <StyledNumberInput
-                      {...register(`ingredients.${index}.amount` as const)}
-                    />
-                  </StyledLabelAndNumberInputContainer>
-                  <StyledLabelAndSelectContainer>
-                    <label>Size:</label>
-                    <StyledSelect {...register(`ingredients.${index}.unit`)}>
-                      {unitsDropdownItems}
-                    </StyledSelect>
-                  </StyledLabelAndSelectContainer>
-                  <StyledLabelAndSelectContainer>
-                    <label>Is allergen:</label>
-                    <StyledSelect
-                      {...register(`ingredients.${index}.isAllergen` as const)}
+                <StyledIngerednientEntry>
+                  <StyledFormLineContainer>
+                    <StyledLabelAndNumberInputContainer>
+                      <label>ID:</label>
+                      <StyledNumberInput {...register("id")} disabled={true} />
+                    </StyledLabelAndNumberInputContainer>
+                    <StyledLabelAndStringInputContainer>
+                      <label>Name:</label>
+                      <StyledStringInput
+                        {...register(`ingredients.${index}.name`)}
+                      />
+                    </StyledLabelAndStringInputContainer>
+                  </StyledFormLineContainer>
+                  <StyledFormLineWrapContainer>
+                    <StyledLabelAndNumberInputContainer>
+                      <label>Amount:</label>
+                      <StyledNumberInput
+                        {...register(`ingredients.${index}.amount`)}
+                      />
+                    </StyledLabelAndNumberInputContainer>
+                    <StyledLabelAndSelectContainer>
+                      <label>Size:</label>
+                      <StyledSelect {...register(`ingredients.${index}.unit`)}>
+                        {unitsDropdownItems}
+                      </StyledSelect>
+                    </StyledLabelAndSelectContainer>
+                    <StyledLabelAndSelectContainer>
+                      <label>Is allergen:</label>
+                      <StyledSelect
+                        {...register(`ingredients.${index}.isAllergen`)}
+                      >
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                      </StyledSelect>
+                    </StyledLabelAndSelectContainer>
+                    <StyledDeleteButton
+                      type="button"
+                      onClick={() => removeIngredient(index)}
                     >
-                      <option value="true">True</option>
-                      <option value="false">False</option>
-                    </StyledSelect>
-                  </StyledLabelAndSelectContainer>
-                  <StyledDeleteButton
-                    type="button"
-                    onClick={() => removeIngredient(index)}
-                  >
-                    Delete
-                  </StyledDeleteButton>
-                </StyledFormLineWrapContainer>
-                <StyledFormLineContainer>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      appendIngredient({
-                        id: 0,
-                        amount: 0,
-                        unit: "",
-                        name: "",
-                        isAllergen: false,
-                      })
-                    }
-                  >
-                    Add ingredient
-                  </button>
-                </StyledFormLineContainer>
+                      Delete
+                    </StyledDeleteButton>
+                  </StyledFormLineWrapContainer>
+                </StyledIngerednientEntry>
               </div>
             );
           })}
+          <AddRecipeButtonContainer>
+            <StyledAddButton
+              type="button"
+              onClick={() =>
+                appendIngredient({
+                  id: 0,
+                  amount: 0,
+                  unit: "",
+                  name: "",
+                  isAllergen: false,
+                })
+              }
+            >
+              Add ingredient
+            </StyledAddButton>
+          </AddRecipeButtonContainer>
         </section>
         <section>
           <Typography variant="h3">Cooking steps</Typography>
+          <StyledDivider />
           {stepFields.map((stepField, index) => {
             return (
               <div key={stepField.id}>
@@ -224,16 +233,17 @@ export function RecipeForm() {
                     Delete
                   </StyledDeleteButton>
                 </StyledFormLineContainer>
-                <StyledFormLineContainer></StyledFormLineContainer>
-                <button
-                  type="button"
-                  onClick={() => appendStep({ id: 0, step: "" })}
-                >
-                  Add step
-                </button>
               </div>
             );
           })}
+          <AddStepButtonContainer>
+            <StyledAddButton
+              type="button"
+              onClick={() => appendStep({ id: 0, step: "" })}
+            >
+              Add step
+            </StyledAddButton>
+          </AddStepButtonContainer>
         </section>
 
         <input type="submit" />
