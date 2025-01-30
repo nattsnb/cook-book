@@ -36,16 +36,16 @@ export function RecipeForm() {
       category: [0],
       title: "",
       photoURL: "",
-      rating: 0,
-      numberOfPortions: 0,
-      cookingTimeInMinutes: 0,
+      rating: null,
+      numberOfPortions: null,
+      cookingTimeInMinutes: null,
       ingredients: [
         {
           id: 0,
-          amount: 0,
+          amount: null,
           unit: "",
           name: "",
-          isAllergen: false,
+          isAllergen: null,
         },
       ],
       cookingSteps: [
@@ -77,10 +77,46 @@ export function RecipeForm() {
 
   const handleRecipeFormSubmit = (recipeFormData: Recipe) => {
     console.log(recipeFormData);
+    createRecipeFromData(recipeFormData);
+  };
+
+  const createRecipeFromData = (data: Recipe) => {
+    let selectedCategory: number;
+
+    if (Array.isArray(data.category)) {
+      selectedCategory = data.category[1] ?? 0;
+    } else if (typeof data.category === "number") {
+      selectedCategory = data.category;
+    } else {
+      selectedCategory = 0;
+    }
+    const newRecipe: Recipe = {
+      id: data.id,
+      category: [0, selectedCategory],
+      title: data.title,
+      ingredients: data.ingredients.map((ingredient: any) => ({
+        id: ingredient.id,
+        amount: ingredient.amount,
+        unit: ingredient.unit,
+        name: ingredient.name,
+        isAllergen: ingredient.isAllergen,
+      })),
+      cookingSteps: data.cookingSteps.map((step: any) => ({
+        id: step.id,
+        step: step.step,
+      })),
+      photoURL: data.photoURL,
+      numberOfPortions: data.numberOfPortions,
+      cookingTimeInMinutes: data.cookingTimeInMinutes,
+      rating: data.rating,
+    };
+    console.log(newRecipe);
   };
 
   let categoriesDropdownItems = CATEGORIES.slice(1).map((category) => (
-    <option key={category.id}>{category.alt}</option>
+    <option key={category.id} value={category.id}>
+      {category.alt}
+    </option>
   ));
 
   let unitsDropdownItems = UNITS.map((unit, index) => (
@@ -101,23 +137,23 @@ export function RecipeForm() {
         <StyledFormLineContainer>
           <StyledLabelAndNumberInputContainer>
             <label>ID:</label>
-            <StyledNumberInput {...register("id")} disabled={true} />
+            <StyledNumberInput {...register("id")} disabled={true} required />
           </StyledLabelAndNumberInputContainer>
           <StyledLabelAndStringInputContainer>
             <label>Tittle:</label>
-            <StyledStringInput {...register("title")} />
+            <StyledStringInput {...register("title")} required />
           </StyledLabelAndStringInputContainer>
         </StyledFormLineContainer>
         <StyledFormLineContainer>
           <StyledLabelAndStringInputContainer>
             <label>Photo URL:</label>
-            <StyledStringInput {...register("photoURL")} />
+            <StyledStringInput {...register("photoURL")} required />
           </StyledLabelAndStringInputContainer>
         </StyledFormLineContainer>
         <StyledFormLineContainer>
           <StyledLabelAndSelectContainer>
             <label>Choose category:</label>
-            <StyledSelect {...register("category")}>
+            <StyledSelect {...register("category")} required>
               {categoriesDropdownItems}
             </StyledSelect>
           </StyledLabelAndSelectContainer>
@@ -134,6 +170,7 @@ export function RecipeForm() {
             <StyledNumberInput
               type="number"
               {...register("numberOfPortions")}
+              required
             />
           </StyledLabelAndNumberInputContainer>
           <StyledLabelAndNumberInputContainer>
@@ -141,6 +178,7 @@ export function RecipeForm() {
             <StyledNumberInput
               type="number"
               {...register("cookingTimeInMinutes")}
+              required
             />
           </StyledLabelAndNumberInputContainer>
           <label>min</label>
@@ -155,12 +193,17 @@ export function RecipeForm() {
                   <StyledFormLineContainer>
                     <StyledLabelAndNumberInputContainer>
                       <label>ID:</label>
-                      <StyledNumberInput {...register("id")} disabled={true} />
+                      <StyledNumberInput
+                        {...register("id")}
+                        disabled={true}
+                        required
+                      />
                     </StyledLabelAndNumberInputContainer>
                     <StyledLabelAndStringInputContainer>
                       <label>Name:</label>
                       <StyledStringInput
                         {...register(`ingredients.${index}.name`)}
+                        required
                       />
                     </StyledLabelAndStringInputContainer>
                   </StyledFormLineContainer>
@@ -169,11 +212,15 @@ export function RecipeForm() {
                       <label>Amount:</label>
                       <StyledNumberInput
                         {...register(`ingredients.${index}.amount`)}
+                        required
                       />
                     </StyledLabelAndNumberInputContainer>
                     <StyledLabelAndSelectContainer>
                       <label>Size:</label>
-                      <StyledSelect {...register(`ingredients.${index}.unit`)}>
+                      <StyledSelect
+                        {...register(`ingredients.${index}.unit`)}
+                        required
+                      >
                         {unitsDropdownItems}
                       </StyledSelect>
                     </StyledLabelAndSelectContainer>
@@ -181,6 +228,7 @@ export function RecipeForm() {
                       <label>Is allergen:</label>
                       <StyledSelect
                         {...register(`ingredients.${index}.isAllergen`)}
+                        required
                       >
                         <option value="true">true</option>
                         <option value="false">false</option>
@@ -226,12 +274,14 @@ export function RecipeForm() {
                     <StyledNumberInput
                       {...register("id")}
                       disabled={true}
+                      required
                     ></StyledNumberInput>
                   </StyledLabelAndNumberInputContainer>
                   <StyledLabelAndStringInputContainer>
                     <label>Cooking step:</label>
                     <textarea
                       {...register(`cookingSteps.${index}.step` as const)}
+                      required
                     />
                   </StyledLabelAndStringInputContainer>
                   <StyledDeleteButton
