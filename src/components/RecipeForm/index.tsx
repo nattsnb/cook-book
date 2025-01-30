@@ -15,10 +15,13 @@ import {
   StyledForm,
   StyledFormLineWrapContainer,
   StyledDivider,
-  StyledIngerednientEntry,
+  StyledIngredientEntry,
   StyledAddButton,
-  AddStepButtonContainer,
-  AddRecipeButtonContainer,
+  TopMarginCentralContainer,
+  CentralContainer,
+  StyledTitleButtonImage,
+  BottomMarginCentralContainer,
+  StyledSubmitButton,
 } from "./RecipeForm.styled.tsx";
 
 const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
@@ -89,6 +92,9 @@ export function RecipeForm() {
 
   return (
     <StyledFormContainer>
+      <BottomMarginCentralContainer>
+        <StyledTitleButtonImage />
+      </BottomMarginCentralContainer>
       <StyledForm onSubmit={handleSubmit(handleRecipeFormSubmit)}>
         <StyledFormLineContainer>
           <StyledLabelAndNumberInputContainer>
@@ -143,7 +149,7 @@ export function RecipeForm() {
           {ingredientFields.map((ingredientField, index) => {
             return (
               <div key={ingredientField.id}>
-                <StyledIngerednientEntry>
+                <StyledIngredientEntry>
                   <StyledFormLineContainer>
                     <StyledLabelAndNumberInputContainer>
                       <label>ID:</label>
@@ -185,11 +191,11 @@ export function RecipeForm() {
                       Delete
                     </StyledDeleteButton>
                   </StyledFormLineWrapContainer>
-                </StyledIngerednientEntry>
+                </StyledIngredientEntry>
               </div>
             );
           })}
-          <AddRecipeButtonContainer>
+          <CentralContainer>
             <StyledAddButton
               type="button"
               onClick={() =>
@@ -204,7 +210,7 @@ export function RecipeForm() {
             >
               Add ingredient
             </StyledAddButton>
-          </AddRecipeButtonContainer>
+          </CentralContainer>
         </section>
         <section>
           <Typography variant="h3">Cooking steps</Typography>
@@ -236,17 +242,20 @@ export function RecipeForm() {
               </div>
             );
           })}
-          <AddStepButtonContainer>
+          <TopMarginCentralContainer>
             <StyledAddButton
               type="button"
               onClick={() => appendStep({ id: 0, step: "" })}
             >
               Add step
             </StyledAddButton>
-          </AddStepButtonContainer>
+          </TopMarginCentralContainer>
         </section>
-
-        <input type="submit" />
+        <TopMarginCentralContainer>
+          <StyledSubmitButton type="submit">
+            <img />
+          </StyledSubmitButton>
+        </TopMarginCentralContainer>
       </StyledForm>
     </StyledFormContainer>
   );

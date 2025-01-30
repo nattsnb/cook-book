@@ -1,4 +1,6 @@
 import { Divider, styled } from "@mui/material";
+import addButtonImage from "../../images/addButton.png";
+import submitButtonImage from "../../images/submitButton.png";
 
 export const StyledFormLineContainer = styled("div")`
   max-width: 95%;
@@ -21,7 +23,27 @@ export const StyledFormContainer = styled("div")`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.palette.secondary.light};
-  padding: ${({ theme }) => theme.spacing(8)} ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(8)} ${({ theme }) => theme.spacing(8)};
+  margin: ${({ theme }) => theme.spacing(8)} ${({ theme }) => theme.spacing(14)};
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    padding: ${({ theme }) => theme.spacing(12)}
+      ${({ theme }) => theme.spacing(6)};
+    margin: ${({ theme }) => theme.spacing(12)}
+      ${({ theme }) => theme.spacing(10)};
+  }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    padding: ${({ theme }) => theme.spacing(10)}
+      ${({ theme }) => theme.spacing(4)};
+    margin: ${({ theme }) => theme.spacing(10)}
+      ${({ theme }) => theme.spacing(8)};
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    padding: ${({ theme }) => theme.spacing(8)}
+      ${({ theme }) => theme.spacing(2)};
+    margin: ${({ theme }) => theme.spacing(8)}
+      ${({ theme }) => theme.spacing(4)};
+  }
 
   button {
     font-family: "Playfair Display", serif;
@@ -202,7 +224,7 @@ export const StyledDivider = styled(Divider)`
   }
 `;
 
-export const StyledIngerednientEntry = styled("div")`
+export const StyledIngredientEntry = styled("div")`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -236,7 +258,7 @@ export const StyledAddButton = styled("button")`
 }
 `;
 
-export const AddStepButtonContainer = styled("div")`
+export const TopMarginCentralContainer = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -252,8 +274,63 @@ export const AddStepButtonContainer = styled("div")`
   }
 `;
 
-export const AddRecipeButtonContainer = styled("div")`
+export const BottomMarginCentralContainer = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: ${({ theme }) => theme.spacing(20)};
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    margin-bottom: ${({ theme }) => theme.spacing(15)};
+  }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    margin-bottom: ${({ theme }) => theme.spacing(15)};
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    margin-bottom: ${({ theme }) => theme.spacing(10)};
+  }
+`;
+
+export const CentralContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const StyledTitleButtonImage = styled("img")`
+  background-image: url(${addButtonImage});
+
+  background-size: cover;
+  background-position: center;
+  width: 540px;
+  height: 190px;
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 405px;
+    height: 135px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    width: 324px;
+    height: 108px;
+  }
+`;
+
+export const StyledSubmitButton = styled("button")`
+  border: none;
+  background-image: url(${submitButtonImage});
+  background-size: cover;
+  background-position: center;
+
+  width: 540px;
+  height: 190px;
+
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    width: 405px;
+    height: 135px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    width: 324px;
+    height: 108px;
+  }
 `;
