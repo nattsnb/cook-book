@@ -23,6 +23,7 @@ import {
   BottomMarginCentralContainer,
   StyledSubmitButton,
 } from "./RecipeForm.styled.tsx";
+import { BackButton } from "../BackButton";
 
 const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
 
@@ -92,6 +93,7 @@ export function RecipeForm() {
 
   return (
     <StyledFormContainer>
+      <BackButton />
       <BottomMarginCentralContainer>
         <StyledTitleButtonImage />
       </BottomMarginCentralContainer>
