@@ -25,12 +25,17 @@ import {
   StyledTextarea,
 } from "./RecipeForm.styled.tsx";
 import { BackButton } from "../BackButton";
+import { useContext } from "react";
+import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
+import { RecipeContext } from "../../App.tsx";
 
 const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
 
 const RATING: number[] = Array.from({ length: 11 }, (_, i) => i * 0.5);
 
 export function RecipeForm() {
+  const { savedRecipes, setSavedRecipes } =
+    useContext<RecipeContextType>(RecipeContext);
   const { register, handleSubmit, control } = useForm<Recipe>({
     defaultValues: {
       id: 0,
@@ -77,8 +82,9 @@ export function RecipeForm() {
   });
 
   const handleRecipeFormSubmit = (recipeFormData: Recipe) => {
-    console.log(recipeFormData);
-    createRecipeFromData(recipeFormData);
+    const newRecipe: Recipe = createRecipeFromData(recipeFormData);
+    const newSavedRecipes = [...savedRecipes, newRecipe];
+    setSavedRecipes(newSavedRecipes);
   };
 
   const createRecipeFromData = (data: Recipe) => {
@@ -102,7 +108,7 @@ export function RecipeForm() {
       cookingTimeInMinutes: data.cookingTimeInMinutes,
       rating: data.rating,
     };
-    console.log(newRecipe);
+    return newRecipe;
   };
 
   let categoriesDropdownItems = CATEGORIES.slice(1).map((category) => (

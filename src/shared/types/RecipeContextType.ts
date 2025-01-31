@@ -3,4 +3,6 @@ export interface RecipeContextType {
   setActiveRecipeId?: (activeRecipe: number | null) => void;
   isEditModeOn?: boolean;
   setIsEditModeOn?: (isEditModeOn: boolean) => void;
+  savedRecipes?: any;
+  setSavedRecipes?: any;
 }

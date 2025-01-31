@@ -9,12 +9,17 @@ import { CategoryView } from "./pages/CategoryView";
 import { RecipeView } from "./pages/RecipeView";
 import { FormView } from "./pages/FormView";
 import "./playfairDisplay.css";
+import { useLocalStorage } from "./useLocalStorage.ts";
 
 export const RecipeContext = createContext<RecipeContextType>({});
 
 function App() {
   const [activeRecipeId, setActiveRecipeId] = useState<number | null>(null);
   const [isEditModeOn, setIsEditModeOn] = useState<boolean>(true);
+  const [savedRecipes, setSavedRecipes] = useLocalStorage({
+    key: "recipe",
+    defaultValue: [],
+  });
 
   return (
     <BrowserRouter>
@@ -24,6 +29,8 @@ function App() {
           setActiveRecipeId,
           isEditModeOn,
           setIsEditModeOn,
+          savedRecipes,
+          setSavedRecipes,
         }}
       >
         <ThemeProvider theme={theme}>
