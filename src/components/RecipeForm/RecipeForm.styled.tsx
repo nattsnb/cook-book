@@ -334,3 +334,10 @@ export const StyledSubmitButton = styled("button")`
     height: 108px;
   }
 `;
+
+export const StyledTextarea = styled("textarea")`
+  resize: none;
+  overflow: hidden;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+`;

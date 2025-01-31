@@ -22,6 +22,7 @@ import {
   StyledTitleButtonImage,
   BottomMarginCentralContainer,
   StyledSubmitButton,
+  StyledTextarea,
 } from "./RecipeForm.styled.tsx";
 import { BackButton } from "../BackButton";
 
@@ -33,7 +34,7 @@ export function RecipeForm() {
   const { register, handleSubmit, control } = useForm<Recipe>({
     defaultValues: {
       id: 0,
-      category: [0],
+      category: null,
       title: "",
       photoURL: "",
       rating: null,
@@ -81,18 +82,9 @@ export function RecipeForm() {
   };
 
   const createRecipeFromData = (data: Recipe) => {
-    let selectedCategory: number;
-
-    if (Array.isArray(data.category)) {
-      selectedCategory = data.category[1] ?? 0;
-    } else if (typeof data.category === "number") {
-      selectedCategory = data.category;
-    } else {
-      selectedCategory = 0;
-    }
     const newRecipe: Recipe = {
       id: data.id,
-      category: [0, selectedCategory],
+      category: data.category,
       title: data.title,
       ingredients: data.ingredients.map((ingredient: any) => ({
         id: ingredient.id,
@@ -279,7 +271,9 @@ export function RecipeForm() {
                   </StyledLabelAndNumberInputContainer>
                   <StyledLabelAndStringInputContainer>
                     <label>Cooking step:</label>
-                    <textarea
+                    <StyledTextarea
+                      rows={3}
+                      cols={10}
                       {...register(`cookingSteps.${index}.step` as const)}
                       required
                     />

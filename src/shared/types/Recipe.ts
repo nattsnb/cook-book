@@ -3,7 +3,7 @@ import { Step } from "./Step.ts";
 
 export interface Recipe {
   id: number;
-  category: number | number[] | null;
+  category: number | null;
   title: string;
   ingredients: Ingredient[];
   cookingSteps: Step[];

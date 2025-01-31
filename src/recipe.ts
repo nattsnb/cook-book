@@ -2,7 +2,7 @@ import { Recipe } from "./shared/types/Recipe.ts";
 
 export const recipe: Recipe = {
   id: 0,
-  category: [0, 4],
+  category: 4,
   title: "Hot cocoa",
   ingredients: [
     {
