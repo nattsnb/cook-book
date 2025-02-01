@@ -2,7 +2,6 @@ import {
   StyledAllergensContainer,
   StyledAllergensTypography,
   StyledDotContainer,
-  StyledInfoBoxContainer,
   StyledRecipeCategoryTypography,
   StyledRecipeNameTypography,
   StyledRecipeNumberTypography,
@@ -10,6 +9,7 @@ import {
 } from "./RecipeCard.styled.tsx";
 import { Recipe } from "../../shared/types/Recipe.ts";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
+import { Card } from "@mui/material";
 
 interface RecipeInfoBoxProps {
   recipe: Recipe;
@@ -23,7 +23,7 @@ export function RecipeInfoBox({ recipe }: RecipeInfoBoxProps) {
     (ingredient) => ingredient.name,
   );
   return (
-    <StyledInfoBoxContainer>
+    <Card variant="thinBorder">
       <StyledRecipeNumberTypography>
         Recipe No. {recipe.id}
       </StyledRecipeNumberTypography>
@@ -41,6 +41,6 @@ export function RecipeInfoBox({ recipe }: RecipeInfoBoxProps) {
         <StyledDotContainer></StyledDotContainer>
         <StyledDotContainer></StyledDotContainer>
       </StyledThreeDotsContainer>
-    </StyledInfoBoxContainer>
+    </Card>
   );
 }

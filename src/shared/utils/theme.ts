@@ -3,9 +3,9 @@ import { createTheme } from "@mui/material/styles";
 const baseTheme = createTheme({
   palette: {
     primary: {
-      light: "#A8D5BA",
-      main: "#5A8D72",
-      dark: "#3B5A47",
+      light: "#6B6A68",
+      main: "#3E3D3A",
+      dark: "#27241A",
       contrastText: "#FFFFFF",
     },
     secondary: {
@@ -107,6 +107,34 @@ const theme = createTheme(baseTheme, {
     },
   },
   components: {
+    MuiCard: {
+      variants: [
+        {
+          props: { variant: "thinBorder" },
+          style: {
+            border: "3px solid",
+            borderColor: baseTheme.palette.primary.main,
+            boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+            borderRadius: "8px",
+            padding: baseTheme.spacing(2),
+            margin: baseTheme.spacing(2),
+            backgroundColor: baseTheme.palette.secondary.light,
+            maxWidth: "340px",
+          },
+        },
+        {
+          props: { variant: "thickBorder" },
+          style: {
+            border: "8px solid",
+            borderColor: baseTheme.palette.primary.dark,
+            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+            borderRadius: "12px",
+            padding: baseTheme.spacing(3),
+            margin: baseTheme.spacing(2),
+          },
+        },
+      ],
+    },
     MuiListItemText: {
       styleOverrides: {
         primary: {

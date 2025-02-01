@@ -127,6 +127,14 @@ declare module "@mui/material/styles/createPalette" {
     light?: string;
     main: string;
     dark?: string;
+    darker?: string;
     contrastText?: string;
+  }
+}
+
+declare module "@mui/material/Paper" {
+  interface PaperPropsVariantOverrides {
+    thinBorder: true;
+    thickBorder: true;
   }
 }
