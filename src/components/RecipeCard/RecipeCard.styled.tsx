@@ -2,15 +2,19 @@ import { styled, Typography } from "@mui/material";
 
 export const StyledRecipeNumberTypography = styled(Typography)`
   font-family: "Playfair Display", serif;
+  font-size: 16px;
 `;
 export const StyledRecipeNameTypography = styled(Typography)`
   font-family: "Playfair Display", serif;
+  font-size: 40px;
 `;
 export const StyledRecipeCategoryTypography = styled(Typography)`
   font-family: "Playfair Display", serif;
+  font-size: 30px;
 `;
 export const StyledAllergensTypography = styled(Typography)`
   font-family: "Playfair Display", serif;
+  font-size: 16px;
 `;
 
 export const StyledInfoBoxContainer = styled("div")`

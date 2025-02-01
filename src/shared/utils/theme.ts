@@ -120,6 +120,9 @@ const theme = createTheme(baseTheme, {
             margin: baseTheme.spacing(2),
             backgroundColor: baseTheme.palette.secondary.light,
             maxWidth: "340px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
           },
         },
         {
