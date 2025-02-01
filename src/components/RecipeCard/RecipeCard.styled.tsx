@@ -33,3 +33,7 @@ export const StyledDotContainer = styled("div")`
   display: flex;
   flex-direction: column;
 `;
+export const StyledRecipeBodyContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+`;

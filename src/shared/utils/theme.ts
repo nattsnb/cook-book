@@ -107,6 +107,13 @@ const theme = createTheme(baseTheme, {
     },
   },
   components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          color: baseTheme.palette.primary.contrastText,
+        },
+      },
+    },
     MuiCard: {
       variants: [
         {
