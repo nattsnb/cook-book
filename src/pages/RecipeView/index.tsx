@@ -4,6 +4,8 @@ import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
 import { RecipeContext } from "../../App.tsx";
 import { Recipe } from "../../shared/types/Recipe.ts";
 import { RecipeCard } from "../../components/RecipeCard";
+import { PageWidthContainer } from "../../shared/components/PageWidthContainer.tsx";
+import { StyledRecipeBody } from "./RecipeView.styled.tsx";
 
 type ParamsInterface = {
   recipeId: string;
@@ -21,12 +23,14 @@ export function RecipeView() {
   );
 
   return (
-    <div>
-      {recipeToDisplay ? (
-        <RecipeCard recipe={recipeToDisplay} />
-      ) : (
-        <p>No recipe with this ID in database</p>
-      )}
-    </div>
+    <PageWidthContainer>
+      <StyledRecipeBody>
+        {recipeToDisplay ? (
+          <RecipeCard recipe={recipeToDisplay} />
+        ) : (
+          <p>No recipe with this ID in database</p>
+        )}
+      </StyledRecipeBody>
+    </PageWidthContainer>
   );
 }
