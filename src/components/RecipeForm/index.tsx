@@ -83,8 +83,10 @@ export function RecipeForm() {
 
   const handleRecipeFormSubmit = (recipeFormData: Recipe) => {
     const newRecipe: Recipe = createRecipeFromData(recipeFormData);
-    const newSavedRecipes = [...savedRecipes, newRecipe];
-    setSavedRecipes(newSavedRecipes);
+    if (Array.isArray(savedRecipes)) {
+      const newSavedRecipes = [...savedRecipes, newRecipe];
+      setSavedRecipes(newSavedRecipes);
+    }
   };
 
   const createRecipeFromData = (data: Recipe) => {

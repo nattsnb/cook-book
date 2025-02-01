@@ -18,7 +18,7 @@ export function RecipeView() {
   if (params.recipeId) {
     recipeId = Number(params.recipeId.slice(1));
   }
-  const recipeToDisplay: Recipe = savedRecipes?.find(
+  const recipeToDisplay = savedRecipes?.find(
     (recipe: Recipe) => recipe.id === recipeId,
   );
 

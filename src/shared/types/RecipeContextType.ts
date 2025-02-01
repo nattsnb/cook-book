@@ -1,8 +1,8 @@
+import { Recipe } from "./Recipe.ts";
+
 export interface RecipeContextType {
-  activeRecipeId?: number | null;
-  setActiveRecipeId?: (activeRecipe: number | null) => void;
-  isEditModeOn?: boolean;
-  setIsEditModeOn?: (isEditModeOn: boolean) => void;
-  savedRecipes?: any;
-  setSavedRecipes?: any;
+  isEditModeOn: boolean;
+  setIsEditModeOn: (isEditModeOn: boolean) => void;
+  savedRecipes: Recipe[] | null;
+  setSavedRecipes: (savedRecipes: Recipe[]) => void;
 }

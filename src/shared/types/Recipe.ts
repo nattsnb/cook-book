@@ -1,6 +1,8 @@
 import { Ingredient } from "./Ingredient";
 import { Step } from "./Step.ts";
 
+export const RECIPES_STORAGE_KEY = "savedRecipes";
+
 export interface Recipe {
   id: number;
   category: number | null;
