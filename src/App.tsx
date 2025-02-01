@@ -14,7 +14,6 @@ import { useLocalStorage } from "./useLocalStorage.ts";
 export const RecipeContext = createContext<RecipeContextType>({});
 
 function App() {
-  const [activeRecipeId, setActiveRecipeId] = useState<number | null>(null);
   const [isEditModeOn, setIsEditModeOn] = useState<boolean>(true);
   const [savedRecipes, setSavedRecipes] = useLocalStorage({
     key: "recipe",
@@ -25,8 +24,6 @@ function App() {
     <BrowserRouter>
       <RecipeContext.Provider
         value={{
-          activeRecipeId,
-          setActiveRecipeId,
           isEditModeOn,
           setIsEditModeOn,
           savedRecipes,
