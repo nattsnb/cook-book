@@ -23,11 +23,14 @@ import {
   BottomMarginCentralContainer,
   StyledSubmitButton,
   StyledTextarea,
+  StyledIdContainer,
 } from "./RecipeForm.styled.tsx";
 import { BackButton } from "../BackButton";
 import { useContext } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
 import { RecipeContext } from "../../App.tsx";
+import { Ingredient } from "../../shared/types/Ingredient.ts";
+import { Step } from "../../shared/types/Step.ts";
 
 const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
 
@@ -36,9 +39,11 @@ const RATING: number[] = Array.from({ length: 11 }, (_, i) => i * 0.5);
 export function RecipeForm() {
   const { savedRecipes, setSavedRecipes } =
     useContext<RecipeContextType>(RecipeContext);
-  const { register, handleSubmit, control } = useForm<Recipe>({
+  let recipeId = savedRecipes ? savedRecipes.length : 0;
+
+  const { register, handleSubmit, control, watch } = useForm<Recipe>({
     defaultValues: {
-      id: 0,
+      id: recipeId,
       category: null,
       title: "",
       photoURL: "",
@@ -81,17 +86,26 @@ export function RecipeForm() {
     name: "cookingSteps",
   });
 
+  const ingredients: Ingredient[] = watch("ingredients");
+  const cookingSteps: Step[] = watch("cookingSteps");
+
   const handleRecipeFormSubmit = (recipeFormData: Recipe) => {
     const newRecipe: Recipe = createRecipeFromData(recipeFormData);
+    let newSavedRecipes: Recipe[] = [];
+    console.log(newRecipe);
     if (Array.isArray(savedRecipes)) {
-      const newSavedRecipes = [...savedRecipes, newRecipe];
-      setSavedRecipes(newSavedRecipes);
+      newSavedRecipes = [...savedRecipes, newRecipe];
+      console.log(newSavedRecipes);
+    } else {
+      newSavedRecipes = [newRecipe];
     }
+    setSavedRecipes(newSavedRecipes);
+    console.log("recipe saved");
   };
 
   const createRecipeFromData = (data: Recipe) => {
     const newRecipe: Recipe = {
-      id: data.id,
+      id: recipeId,
       category: data.category,
       title: data.title,
       ingredients: data.ingredients.map((ingredient: any) => ({
@@ -137,7 +151,7 @@ export function RecipeForm() {
         <StyledFormLineContainer>
           <StyledLabelAndNumberInputContainer>
             <label>ID:</label>
-            <StyledNumberInput {...register("id")} disabled={true} required />
+            <StyledIdContainer>{recipeId}</StyledIdContainer>
           </StyledLabelAndNumberInputContainer>
           <StyledLabelAndStringInputContainer>
             <label>Tittle:</label>
@@ -193,11 +207,7 @@ export function RecipeForm() {
                   <StyledFormLineContainer>
                     <StyledLabelAndNumberInputContainer>
                       <label>ID:</label>
-                      <StyledNumberInput
-                        {...register("id")}
-                        disabled={true}
-                        required
-                      />
+                      <StyledIdContainer>{index + 1}</StyledIdContainer>
                     </StyledLabelAndNumberInputContainer>
                     <StyledLabelAndStringInputContainer>
                       <label>Name:</label>
@@ -250,11 +260,11 @@ export function RecipeForm() {
               type="button"
               onClick={() =>
                 appendIngredient({
-                  id: 0,
-                  amount: 0,
+                  id: ingredients.length,
+                  amount: null,
                   unit: "",
                   name: "",
-                  isAllergen: false,
+                  isAllergen: null,
                 })
               }
             >
@@ -271,11 +281,7 @@ export function RecipeForm() {
                 <StyledFormLineContainer>
                   <StyledLabelAndNumberInputContainer>
                     <label>ID:</label>
-                    <StyledNumberInput
-                      {...register("id")}
-                      disabled={true}
-                      required
-                    ></StyledNumberInput>
+                    <StyledIdContainer>{index + 1}</StyledIdContainer>
                   </StyledLabelAndNumberInputContainer>
                   <StyledLabelAndStringInputContainer>
                     <label>Cooking step:</label>
@@ -299,7 +305,7 @@ export function RecipeForm() {
           <TopMarginCentralContainer>
             <StyledAddButton
               type="button"
-              onClick={() => appendStep({ id: 0, step: "" })}
+              onClick={() => appendStep({ id: cookingSteps.length, step: "" })}
             >
               Add step
             </StyledAddButton>

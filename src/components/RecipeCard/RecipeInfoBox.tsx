@@ -25,7 +25,7 @@ export function RecipeInfoBox({ recipe }: RecipeInfoBoxProps) {
   return (
     <Card variant="thinBorder">
       <StyledRecipeNumberTypography>
-        Recipe No. {recipe.id}
+        Recipe No. {recipe.id + 1}
       </StyledRecipeNumberTypography>
       <StyledRecipeNameTypography>{recipe.title}</StyledRecipeNameTypography>
       <StyledRecipeCategoryTypography>
@@ -33,7 +33,7 @@ export function RecipeInfoBox({ recipe }: RecipeInfoBoxProps) {
       </StyledRecipeCategoryTypography>
       <StyledAllergensContainer>
         <StyledAllergensTypography>
-          {allergensStringsArray.join(", ")}
+          allergens: {allergensStringsArray.join(", ")}
         </StyledAllergensTypography>
       </StyledAllergensContainer>
       <StyledThreeDotsContainer>

@@ -16,7 +16,7 @@ export function RecipeView() {
   const params = useParams<ParamsInterface>();
   let recipeId = null;
   if (params.recipeId) {
-    recipeId = Number(params.recipeId.slice(1));
+    recipeId = Number(params.recipeId);
   }
   const recipeToDisplay = savedRecipes?.find(
     (recipe: Recipe) => recipe.id === recipeId,

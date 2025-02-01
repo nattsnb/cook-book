@@ -341,3 +341,39 @@ export const StyledTextarea = styled("textarea")`
   white-space: pre-wrap;
   overflow-wrap: break-word;
 `;
+
+export const StyledIdContainer = styled("div")`
+  font-size: 28px;
+  height: 50px;
+  padding: ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(4)}
+    ${({ theme }) => theme.spacing(1)} ${({ theme }) => theme.spacing(4)};
+  border: 1px solid ${({ theme }) => theme.palette.secondary.dark};
+  border-radius: 4px;
+  margin-left: ${({ theme }) => theme.spacing(5)};
+  margin-right: ${({ theme }) => theme.spacing(4)};
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    font-size: 24px;
+    height: 40px;
+    padding: ${({ theme }) => theme.spacing(3)}
+      ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(0)}
+      ${({ theme }) => theme.spacing(3)};
+    margin-left: ${({ theme }) => theme.spacing(4)};
+    margin-right: ${({ theme }) => theme.spacing(3)};
+  }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    font-size: 16px;
+    height: 30px;
+    padding: ${({ theme }) => theme.spacing(2)}
+      ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(0)}
+      ${({ theme }) => theme.spacing(2)};
+    margin-left: ${({ theme }) => theme.spacing(3)};
+    margin-right: ${({ theme }) => theme.spacing(2)};
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    font-size: 14px;
+    height: 25px;
+    margin-left: ${({ theme }) => theme.spacing(2)};
+    margin-right: ${({ theme }) => theme.spacing(1)};
+  }
+`;
