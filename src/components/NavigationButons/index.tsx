@@ -15,7 +15,6 @@ export function NavigationButtons({
   ingredientsRef,
   stepsRef,
 }: NavigationButtonsProps) {
-  console.log("render");
 
   const handleScroll = (ref: RefObject<HTMLDivElement>) => {
     if (ref?.current) {
