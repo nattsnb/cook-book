@@ -11,7 +11,8 @@ import {
 import { Recipe } from "../../shared/types/Recipe.ts";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
 import { Card } from "@mui/material";
-import { forwardRef } from "react";
+import React, { forwardRef } from "react";
+import { CATEGORIES } from "../../constans/categories.ts";
 
 interface RecipeInfoBoxProps {
   recipe: Recipe;
@@ -25,6 +26,13 @@ export const InfoBox = forwardRef<HTMLDivElement, RecipeInfoBoxProps>(
     const allergensStringsArray: string[] = allergensIngredientsArray.map(
       (ingredient) => ingredient.name,
     );
+
+    const category = CATEGORIES.find(
+      (category) => category.id === Number(recipe.category),
+    );
+
+    const categoryName: string = category ? category.alt : "Unknown Category";
+
     return (
       <StyledComponentContainer>
         <Card
@@ -32,13 +40,13 @@ export const InfoBox = forwardRef<HTMLDivElement, RecipeInfoBoxProps>(
           ref={infoRef as React.RefObject<HTMLDivElement>}
         >
           <StyledRecipeNumberTypography>
-            Recipe No. {recipe.id + 1}
+            Recipe No. {recipe.id}
           </StyledRecipeNumberTypography>
           <StyledRecipeNameTypography>
             {recipe.title}
           </StyledRecipeNameTypography>
           <StyledRecipeCategoryTypography>
-            {recipe.category}
+            {categoryName}
           </StyledRecipeCategoryTypography>
           <StyledAllergensContainer>
             <StyledAllergensTypography>
