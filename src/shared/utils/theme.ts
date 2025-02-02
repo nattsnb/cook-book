@@ -140,6 +140,13 @@ const theme = createTheme(baseTheme, {
         },
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: "none",
+        },
+      },
+    },
     MuiListItemText: {
       styleOverrides: {
         primary: {

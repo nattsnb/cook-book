@@ -1,4 +1,5 @@
 import { styled, Typography } from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
 
 export const StyledTypographyAboveH1 = styled(Typography)`
   color: ${({ theme }) => theme.palette.secondary.light};
@@ -27,12 +28,23 @@ export const LinkContentContainer = styled("div")`
   justify-content: center;
 
   font-family: "Playfair Display", serif;
-  color: ${({ theme }) => theme.palette.secondary.contrastText};
-    font-size: 20px;
+  color: ${({ theme }) => theme.palette.secondary.light};
+  font-size: 20px;
   ${({ theme }) => theme.breakpoints.down("md")} {
     font-size: 18px;
   }
   ${({ theme }) => theme.breakpoints.down("sm")} {
     font-size: 16px;
   }
+`;
+
+export const StyledCircleSmallIcon = styled(CircleIcon)`
+  font-size: 4px;
+  color: ${({ theme }) => theme.palette.secondary.light};
+`;
+
+export const StyledCircleLargeIcon = styled(CircleIcon)`
+  font-size: 6px;
+  color: ${({ theme }) => theme.palette.secondary.light};
+  padding: 0 ${({ theme }) => theme.spacing(2)};
 `;

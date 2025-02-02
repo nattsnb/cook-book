@@ -1,4 +1,5 @@
 import { Button, Divider, styled, Typography } from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
 
 export const StyledAllergensTypography = styled(Typography)`
   font-family: "Playfair Display", serif;
@@ -222,4 +223,28 @@ export const CircularButtonLabel = styled("div")`
   ${({ theme }) => theme.breakpoints.down("lg")} {
     font-size: 16px;
   }
+`;
+
+export const LinkContentContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-height: 15px;
+  margin-bottom: ${({ theme }) => theme.spacing(2)};
+
+  font-family: "Playfair Display", serif;
+  color: ${({ theme }) => theme.palette.primary.dark};
+  font-size: 16px;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    font-size: 14px;
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    font-size: 12px;
+  }
+`;
+
+export const StyledCircleSmallIcon = styled(CircleIcon)`
+  font-size: 4px;
+  padding: 0 ${({ theme }) => theme.spacing(2)};
 `;

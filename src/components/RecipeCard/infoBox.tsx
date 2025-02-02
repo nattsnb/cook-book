@@ -9,12 +9,14 @@ import {
   StyledRowOfCircularButtonsContainer,
   CircularButtonLabel,
   ButtonAndLabelContainer,
+  LinkContentContainer,
+  StyledCircleSmallIcon,
 } from "./RecipeCard.styled.tsx";
 import { Recipe } from "../../shared/types/Recipe.ts";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
 import React, { forwardRef } from "react";
 import { CATEGORIES } from "../../constans/categories.ts";
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 
 interface RecipeInfoBoxProps {
   recipe: Recipe;
@@ -39,6 +41,13 @@ export const InfoBox = forwardRef<HTMLDivElement, RecipeInfoBoxProps>(
         ref={infoRef as React.RefObject<HTMLDivElement>}
       >
         <StyledInfoBoxWrapper>
+          <Link>
+            <LinkContentContainer>
+              <StyledCircleSmallIcon />
+              <p>Edit</p>
+              <StyledCircleSmallIcon />
+            </LinkContentContainer>
+          </Link>
           <Typography variant="h4">Recipe No. {recipe.id}</Typography>
           <StyledSmallDivider />
           <Typography variant="h2">{recipe.title}</Typography>
