@@ -25,7 +25,6 @@ import {
   StyledTextarea,
   StyledIdContainer,
 } from "./RecipeForm.styled.tsx";
-import { BackButton } from "../BackButton";
 import { useContext } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
 import { RecipeContext } from "../../App.tsx";
@@ -143,7 +142,6 @@ export function RecipeForm() {
 
   return (
     <StyledFormContainer>
-      <BackButton />
       <BottomMarginCentralContainer>
         <StyledTitleButtonImage />
       </BottomMarginCentralContainer>

@@ -6,6 +6,8 @@ export const StyledLinkBarContainer = styled("div")`
   width: 100%;
   min-height: 50px;
   background-color: ${({ theme }) => theme.palette.primary.main};
+  position: fixed;
+  bottom: 0;
 `;
 
 export const StyledButton = styled("button")`
@@ -22,7 +24,6 @@ export const StyledButton = styled("button")`
     ${({ theme }) => theme.palette.primary.main},
     ${({ theme }) => theme.palette.primary.dark}
   );
-  border-radius: ${({ theme }) => theme.spacing(2)};
   box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px;
   color: ${({ theme }) => theme.palette.secondary.light};
   border: 0;

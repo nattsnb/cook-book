@@ -19,3 +19,13 @@ export const StyledTypographyAboveH1 = styled(Typography)`
 export const StyledTitleContainer = styled("div")`
   padding-bottom: ${({ theme }) => theme.spacing(4)};
 `;
+
+export const LinkContentContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Playfair Display", serif;
+  color: ${({ theme }) => theme.palette.secondary.contrastText};
+`;

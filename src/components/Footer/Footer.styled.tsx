@@ -21,13 +21,15 @@ export const StyledFooterContainer = styled("div")`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: ${({ theme }) => theme.spacing(12)};
 `;
 
 export const StyledFooterDivider = styled(Divider)`
   height: 1px;
   background-color: ${({ theme }) => theme.palette.secondary.light};
   width: 80%;
-  margin-bottom: ${({ theme }) => theme.spacing(3)};
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+  margin-top: ${({ theme }) => theme.spacing(3)};
 `;
 
 export const StyledCircleSmallIcon = styled(CircleIcon)`

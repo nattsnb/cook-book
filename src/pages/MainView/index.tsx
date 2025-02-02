@@ -4,7 +4,6 @@ import {
   StyledCategoriesContainer,
   StyledCategoriesImageLink,
   StyledButtonLikeImageLink,
-  StyledKitchenPictureContainer,
   StyledMainBody,
 } from "./MainView.styled.tsx";
 import addButton from "../../images/addButton.png";
@@ -13,7 +12,6 @@ import { CATEGORIES } from "../../constans/categories.ts";
 export function MainView() {
   return (
     <PageWidthContainer>
-      <StyledKitchenPictureContainer />
       <StyledMainBody>
         <StyledButtonContainer>
           <StyledButtonLikeImageLink

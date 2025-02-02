@@ -30,18 +30,18 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
     <StyledBodyContainer>
       {isViewportSmallerThanMd ? (
         <RecipeCardContainer>
-          <NavigationButtons
-            infoRef={infoRef}
-            galleryRef={galleryRef}
-            ingredientsRef={ingredientsRef}
-            stepsRef={stepsRef}
-          />
           <NarrowViewContainer>
             <InfoBox recipe={recipe} ref={infoRef} />
             <Gallery recipe={recipe} ref={galleryRef} />
             <Ingredients recipe={recipe} ref={ingredientsRef} />
             <Steps recipe={recipe} ref={stepsRef} />
           </NarrowViewContainer>
+          <NavigationButtons
+            infoRef={infoRef}
+            galleryRef={galleryRef}
+            ingredientsRef={ingredientsRef}
+            stepsRef={stepsRef}
+          />
         </RecipeCardContainer>
       ) : (
         <RecipeCardContainer>
