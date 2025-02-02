@@ -55,3 +55,9 @@ export const StyledGalleryImag = styled("img")`
   object-position: center;
   display: block;
 `;
+
+export const StyledIngredientContainer = styled("div")`
+  padding: ${({ theme }) => theme.spacing(2)};
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+`;

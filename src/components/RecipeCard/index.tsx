@@ -6,6 +6,7 @@ import { StyledBodyContainer } from "./RecipeCard.styled.tsx";
 import { Gallery } from "./Gallery.tsx";
 import { useMediaQuery } from "@mui/material";
 import theme from "../../shared/utils/theme.ts";
+import { Ingredients } from "./Ingredients.tsx";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -31,6 +32,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
       )}
       <InfoBox recipe={recipe} ref={infoRef} />
       <Gallery recipe={recipe} ref={galleryRef} />
+      <Ingredients recipe={recipe} ref={ingredientsRef} />
     </StyledBodyContainer>
   );
 }

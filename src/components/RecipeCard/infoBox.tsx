@@ -30,7 +30,6 @@ export const InfoBox = forwardRef<HTMLDivElement, RecipeInfoBoxProps>(
     const category = CATEGORIES.find(
       (category) => category.id === Number(recipe.category),
     );
-
     const categoryName: string = category ? category.alt : "Unknown Category";
 
     return (
