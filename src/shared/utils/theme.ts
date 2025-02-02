@@ -48,28 +48,54 @@ const theme = createTheme(baseTheme, {
       },
     },
     h2: {
-      fontSize: "36px",
+      fontSize: "40px",
       fontWeight: 500,
       lineHeight: 1.4,
+      color: baseTheme.palette.primary.dark,
+      textTransform: "capitalize",
       fontFamily: "'Playfair Display', serif",
-    },
-    h3: {
-      fontSize: "45px",
-      fontWeight: 400,
-      lineHeight: 1.3,
-      fontFamily: "'Playfair Display', serif",
-      marginTop: baseTheme.spacing(16),
+      marginBottom: baseTheme.spacing(4),
       [baseTheme.breakpoints.down("lg")]: {
-        marginTop: baseTheme.spacing(12),
-        fontSize: "38px",
+        fontSize: "36px",
       },
       [baseTheme.breakpoints.down("md")]: {
-        marginTop: baseTheme.spacing(10),
-        fontSize: "34px",
+        marginBottom: baseTheme.spacing(2),
+        fontSize: "32px",
       },
       [baseTheme.breakpoints.down("sm")]: {
-        marginTop: baseTheme.spacing(8),
-        fontSize: "30px",
+        fontSize: "28px",
+      },
+    },
+    h3: {
+      fontSize: "32px",
+      fontWeight: 300,
+      lineHeight: 1.3,
+      color: baseTheme.palette.primary.dark,
+      fontFamily: "'Playfair Display', serif",
+      [baseTheme.breakpoints.down("lg")]: {
+        fontSize: "28px",
+      },
+      [baseTheme.breakpoints.down("md")]: {
+        fontSize: "24px",
+      },
+      [baseTheme.breakpoints.down("sm")]: {
+        fontSize: "20px",
+      },
+    },
+    h4: {
+      fontSize: "22px",
+      fontWeight: 300,
+      lineHeight: 1.3,
+      color: baseTheme.palette.primary.dark,
+      fontFamily: "'Playfair Display', serif",
+      [baseTheme.breakpoints.down("lg")]: {
+        fontSize: "20px",
+      },
+      [baseTheme.breakpoints.down("md")]: {
+        fontSize: "16px",
+      },
+      [baseTheme.breakpoints.down("sm")]: {
+        fontSize: "14px",
       },
     },
   },

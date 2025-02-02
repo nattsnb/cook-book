@@ -1,6 +1,8 @@
-import { Button } from "@mui/material";
 import { RefObject } from "react";
-import { StyledLinkBarContainer } from "./NavigationButtons.styled.tsx";
+import {
+  StyledLinkBarContainer,
+  StyledButton,
+} from "./NavigationButtons.styled.tsx";
 
 interface NavigationButtonsProps {
   infoRef: RefObject<HTMLDivElement>;
@@ -29,10 +31,16 @@ export function NavigationButtons({
 
   return (
     <StyledLinkBarContainer>
-      <Button onClick={() => handleScroll(infoRef)}>Info</Button>
-      <Button onClick={() => handleScroll(galleryRef)}>Gallery</Button>
-      <Button onClick={() => handleScroll(ingredientsRef)}>Ingredients</Button>
-      <Button onClick={() => handleScroll(stepsRef)}>Cooking steps</Button>
+      <StyledButton onClick={() => handleScroll(infoRef)}>Info</StyledButton>
+      <StyledButton onClick={() => handleScroll(galleryRef)}>
+        Gallery
+      </StyledButton>
+      <StyledButton onClick={() => handleScroll(ingredientsRef)}>
+        Ingredients
+      </StyledButton>
+      <StyledButton onClick={() => handleScroll(stepsRef)}>
+        Cooking steps
+      </StyledButton>
     </StyledLinkBarContainer>
   );
 }

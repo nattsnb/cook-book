@@ -3,9 +3,9 @@ import React, { forwardRef } from "react";
 import { Typography } from "@mui/material";
 import {
   StyledComponentContainer,
-  StyledIngredientContainer,
+  StyledEntryContainer,
+  StyledDivider,
 } from "./RecipeCard.styled.tsx";
-import { StyledDivider } from "../RecipeForm/RecipeForm.styled.tsx";
 import pluralize from "pluralize";
 
 interface IngredientsProps {
@@ -35,9 +35,9 @@ export const Ingredients = forwardRef<HTMLDivElement, IngredientsProps>(
         <StyledDivider />
         {ingredientsToDisplay.map((ingredient, index) => {
           return (
-            <StyledIngredientContainer key={index}>
+            <StyledEntryContainer key={index}>
               {index + 1 + ". " + ingredient}
-            </StyledIngredientContainer>
+            </StyledEntryContainer>
           );
         })}
       </StyledComponentContainer>

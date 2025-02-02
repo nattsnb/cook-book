@@ -2,16 +2,19 @@ import {
   StyledAllergensContainer,
   StyledAllergensTypography,
   StyledComponentContainer,
-  StyledDotContainer,
-  StyledRecipeCategoryTypography,
-  StyledRecipeNameTypography,
-  StyledRecipeNumberTypography,
-  StyledThreeDotsContainer,
+  StyledCircularButton,
+  StyledInfoBoxWrapper,
+  StyledSmallDivider,
+  StyledCircularButtonsContainer,
+  StyledRowOfCircularButtonsContainer,
+  CircularButtonLabel,
+  ButtonAndLabelContainer,
 } from "./RecipeCard.styled.tsx";
 import { Recipe } from "../../shared/types/Recipe.ts";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
 import React, { forwardRef } from "react";
 import { CATEGORIES } from "../../constans/categories.ts";
+import { Typography } from "@mui/material";
 
 interface RecipeInfoBoxProps {
   recipe: Recipe;
@@ -35,23 +38,37 @@ export const InfoBox = forwardRef<HTMLDivElement, RecipeInfoBoxProps>(
       <StyledComponentContainer
         ref={infoRef as React.RefObject<HTMLDivElement>}
       >
-        <StyledRecipeNumberTypography>
-          Recipe No. {recipe.id}
-        </StyledRecipeNumberTypography>
-        <StyledRecipeNameTypography>{recipe.title}</StyledRecipeNameTypography>
-        <StyledRecipeCategoryTypography>
-          {categoryName}
-        </StyledRecipeCategoryTypography>
-        <StyledAllergensContainer>
-          <StyledAllergensTypography>
-            allergens: {allergensStringsArray.join(", ")}
-          </StyledAllergensTypography>
-        </StyledAllergensContainer>
-        <StyledThreeDotsContainer>
-          <StyledDotContainer></StyledDotContainer>
-          <StyledDotContainer></StyledDotContainer>
-          <StyledDotContainer></StyledDotContainer>
-        </StyledThreeDotsContainer>
+        <StyledInfoBoxWrapper>
+          <Typography variant="h4">Recipe No. {recipe.id}</Typography>
+          <StyledSmallDivider />
+          <Typography variant="h2">{recipe.title}</Typography>
+          <Typography variant="h3">{categoryName}</Typography>
+          <StyledAllergensContainer>
+            <StyledAllergensTypography>
+              allergens: {allergensStringsArray.join(", ")}
+            </StyledAllergensTypography>
+          </StyledAllergensContainer>
+        </StyledInfoBoxWrapper>
+        <StyledRowOfCircularButtonsContainer>
+          <StyledCircularButtonsContainer>
+            <ButtonAndLabelContainer>
+              <CircularButtonLabel>Portions: </CircularButtonLabel>
+              <StyledCircularButton>
+                {recipe.numberOfPortions}
+              </StyledCircularButton>
+            </ButtonAndLabelContainer>
+            <ButtonAndLabelContainer>
+              <CircularButtonLabel>Cooking time: </CircularButtonLabel>
+              <StyledCircularButton>
+                {recipe.cookingTimeInMinutes}
+              </StyledCircularButton>
+            </ButtonAndLabelContainer>
+            <ButtonAndLabelContainer>
+              <CircularButtonLabel>Rating: </CircularButtonLabel>
+              <StyledCircularButton>{recipe.rating}</StyledCircularButton>
+            </ButtonAndLabelContainer>
+          </StyledCircularButtonsContainer>
+        </StyledRowOfCircularButtonsContainer>
       </StyledComponentContainer>
     );
   },

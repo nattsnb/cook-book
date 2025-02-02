@@ -3,9 +3,9 @@ import React, { forwardRef } from "react";
 import { Typography } from "@mui/material";
 import {
   StyledComponentContainer,
-  StyledIngredientContainer,
+  StyledEntryContainer,
+  StyledDivider,
 } from "./RecipeCard.styled.tsx";
-import { StyledDivider } from "../RecipeForm/RecipeForm.styled.tsx";
 
 interface StepsProps {
   recipe: Recipe;
@@ -21,9 +21,9 @@ export const Steps = forwardRef<HTMLDivElement, StepsProps>(
         <StyledDivider />
         {recipe.cookingSteps.map((step, index) => {
           return (
-            <StyledIngredientContainer key={index}>
+            <StyledEntryContainer key={index}>
               {index + 1 + ". " + step.step}
-            </StyledIngredientContainer>
+            </StyledEntryContainer>
           );
         })}
       </StyledComponentContainer>

@@ -7,3 +7,23 @@ export const StyledLinkBarContainer = styled("div")`
   min-height: 50px;
   background-color: ${({ theme }) => theme.palette.primary.main};
 `;
+
+export const StyledButton = styled("button")`
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  width: 100%;
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    font-size: 15px;
+    width: 100%;
+  }
+  background-color: initial;
+  background-image: linear-gradient(
+    180deg,
+    ${({ theme }) => theme.palette.primary.main},
+    ${({ theme }) => theme.palette.primary.dark}
+  );
+  border-radius: ${({ theme }) => theme.spacing(2)};
+  box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px;
+  color: ${({ theme }) => theme.palette.secondary.light};
+  border: 0;
+`;
