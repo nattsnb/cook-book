@@ -2,11 +2,17 @@ import { InfoBox } from "./infoBox.tsx";
 import { Recipe } from "../../shared/types/Recipe.ts";
 import { useRef } from "react";
 import { NavigationButtons } from "../NavigationButons";
-import { StyledBodyContainer } from "./RecipeCard.styled.tsx";
+import {
+  NarrowViewContainer,
+  RowOfWideViewContainer,
+  StyledBodyContainer,
+  RecipeCardContainer,
+} from "./RecipeCard.styled.tsx";
 import { Gallery } from "./Gallery.tsx";
 import { useMediaQuery } from "@mui/material";
 import theme from "../../shared/utils/theme.ts";
 import { Ingredients } from "./Ingredients.tsx";
+import { Steps } from "./Steps.tsx";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -22,17 +28,33 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
 
   return (
     <StyledBodyContainer>
-      {isViewportSmallerThanMd && (
-        <NavigationButtons
-          infoRef={infoRef}
-          galleryRef={galleryRef}
-          ingredientsRef={ingredientsRef}
-          stepsRef={stepsRef}
-        />
+      {isViewportSmallerThanMd ? (
+        <RecipeCardContainer>
+          <NavigationButtons
+            infoRef={infoRef}
+            galleryRef={galleryRef}
+            ingredientsRef={ingredientsRef}
+            stepsRef={stepsRef}
+          />
+          <NarrowViewContainer>
+            <InfoBox recipe={recipe} ref={infoRef} />
+            <Gallery recipe={recipe} ref={galleryRef} />
+            <Ingredients recipe={recipe} ref={ingredientsRef} />
+            <Steps recipe={recipe} ref={stepsRef} />
+          </NarrowViewContainer>
+        </RecipeCardContainer>
+      ) : (
+        <RecipeCardContainer>
+          <RowOfWideViewContainer>
+            <InfoBox recipe={recipe} ref={infoRef} />
+            <Gallery recipe={recipe} ref={galleryRef} />
+          </RowOfWideViewContainer>
+          <RowOfWideViewContainer>
+            <Ingredients recipe={recipe} ref={ingredientsRef} />
+            <Steps recipe={recipe} ref={stepsRef} />
+          </RowOfWideViewContainer>
+        </RecipeCardContainer>
       )}
-      <InfoBox recipe={recipe} ref={infoRef} />
-      <Gallery recipe={recipe} ref={galleryRef} />
-      <Ingredients recipe={recipe} ref={ingredientsRef} />
     </StyledBodyContainer>
   );
 }

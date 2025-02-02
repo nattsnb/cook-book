@@ -1,6 +1,6 @@
 import { Recipe } from "../../shared/types/Recipe.ts";
 import React, { forwardRef } from "react";
-import { Card, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import {
   StyledComponentContainer,
   StyledIngredientContainer,
@@ -23,26 +23,23 @@ export const Ingredients = forwardRef<HTMLDivElement, IngredientsProps>(
         );
       } else {
         ingredientsToDisplay.push(
-          `${ingredient.amount}${ingredient.unit} of ${ingredient.name}`,
+          `${ingredient.amount} ${ingredient.unit} of ${ingredient.name}`,
         );
       }
     });
     return (
-      <StyledComponentContainer>
-        <Card
-          variant={"thinBorder"}
-          ref={ingredientsRef as React.RefObject<HTMLDivElement>}
-        >
-          <Typography variant="h3">Ingredients</Typography>
-          <StyledDivider />
-          {ingredientsToDisplay.map((ingredient, index) => {
-            return (
-              <StyledIngredientContainer key={index}>
-                {index + 1 + ". " + ingredient}
-              </StyledIngredientContainer>
-            );
-          })}
-        </Card>
+      <StyledComponentContainer
+        ref={ingredientsRef as React.RefObject<HTMLDivElement>}
+      >
+        <Typography variant="h3">Ingredients</Typography>
+        <StyledDivider />
+        {ingredientsToDisplay.map((ingredient, index) => {
+          return (
+            <StyledIngredientContainer key={index}>
+              {index + 1 + ". " + ingredient}
+            </StyledIngredientContainer>
+          );
+        })}
       </StyledComponentContainer>
     );
   },

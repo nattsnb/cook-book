@@ -42,9 +42,34 @@ export const StyledBodyContainer = styled("div")`
 `;
 
 export const StyledComponentContainer = styled("div")`
-  width: 450px;
+  width: 100%;
+  height: inherit;
+  padding: ${({ theme }) => theme.spacing(2)};
+  box-sizing: border-box;
+  border: 3px solid;
+  border-color: ${({ theme }) => theme.palette.primary.main};
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  margin: ${({ theme }) => theme.spacing(2)};
   ${({ theme }) => theme.breakpoints.down("md")} {
-    width: 100%;
+    margin: ${({ theme }) => theme.spacing(2)} 0;
+  }
+`;
+
+export const StyledGalleryContainer = styled("div")`
+  width: 100%;
+  height: inherit;
+  padding: 0;
+  box-sizing: border-box;
+  border: 6px solid;
+  border-color: ${({ theme }) => theme.palette.primary.main};
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+
+  margin: ${({ theme }) => theme.spacing(2)};
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    margin: ${({ theme }) => theme.spacing(2)} 0;
   }
 `;
 
@@ -60,4 +85,24 @@ export const StyledIngredientContainer = styled("div")`
   padding: ${({ theme }) => theme.spacing(2)};
   font-family: "Playfair Display", serif;
   font-size: 30px;
+`;
+
+export const NarrowViewContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 ${({ theme }) => theme.spacing(2)};
+`;
+
+export const RecipeCardContainer = styled("div")`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const RowOfWideViewContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 `;

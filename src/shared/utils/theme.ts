@@ -114,35 +114,6 @@ const theme = createTheme(baseTheme, {
         },
       },
     },
-    MuiCard: {
-      variants: [
-        {
-          props: { variant: "thinBorder" },
-          style: {
-            border: "3px solid",
-            borderColor: baseTheme.palette.primary.main,
-            boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
-            borderRadius: "8px",
-            padding: baseTheme.spacing(2),
-            margin: baseTheme.spacing(2),
-            backgroundColor: baseTheme.palette.secondary.light,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          },
-        },
-        {
-          props: { variant: "thickBorder" },
-          style: {
-            border: "8px solid",
-            borderColor: baseTheme.palette.primary.dark,
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-            borderRadius: "12px",
-            margin: baseTheme.spacing(2),
-          },
-        },
-      ],
-    },
     MuiListItemText: {
       styleOverrides: {
         primary: {
