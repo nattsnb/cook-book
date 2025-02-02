@@ -28,4 +28,11 @@ export const LinkContentContainer = styled("div")`
 
   font-family: "Playfair Display", serif;
   color: ${({ theme }) => theme.palette.secondary.contrastText};
+    font-size: 20px;
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    font-size: 18px;
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    font-size: 16px;
+  }
 `;
