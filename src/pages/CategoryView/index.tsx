@@ -26,6 +26,8 @@ export function CategoryView() {
   const { savedRecipes } = useContext<RecipeContextType>(RecipeContext);
   const params = useParams<ParamsInterface>();
   let categoryId = null;
+  let recipesToDisplay: Recipe[] = [];
+
   if (params.categoryId) {
     categoryId = Number(params.categoryId);
   }
@@ -33,21 +35,17 @@ export function CategoryView() {
     (category) => category.id === categoryId,
   ) || { alt: "No category found" };
 
-  let recipesToDisplay: Recipe[] = [];
-  if (savedRecipes) {
+  if (categoryId === 0 && savedRecipes) {
+    recipesToDisplay = savedRecipes;
+  } else if (savedRecipes) {
     recipesToDisplay = savedRecipes?.filter(
       (recipe) => Number(recipe.category) === categoryId,
     );
-    recipesToDisplay.sort((a: Recipe, b: Recipe) => {
-      if (a.title.slice(1) < b.title.slice(1)) {
-        return -1;
-      }
-      if (a.title.slice(1) > b.title.slice(1)) {
-        return 1;
-      }
-      return 0;
-    });
   }
+
+  recipesToDisplay = [...recipesToDisplay].sort((a: Recipe, b: Recipe) =>
+    a.title.toLowerCase().localeCompare(b.title.toLowerCase()),
+  );
 
   return (
     <PageWidthContainer>
