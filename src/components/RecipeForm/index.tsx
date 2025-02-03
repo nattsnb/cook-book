@@ -39,7 +39,7 @@ interface RecipeFormProps {
 }
 
 const initialValues: Recipe = {
-  id: null,
+  id: 0,
   category: null,
   title: "",
   photoURL: "",
@@ -68,20 +68,21 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
     useContext<RecipeContextType>(RecipeContext);
 
   let defaultValues = null;
-  let recipeId = null;
+  let recipeId = 0;
 
   if (recipeToEdit) {
     defaultValues = recipeToEdit;
-    recipeId = savedRecipes ? savedRecipes.length : 0;
+    recipeId = recipeToEdit.id;
   } else {
     const nextRecipeId = savedRecipes ? savedRecipes.length : 0;
     recipeId = nextRecipeId;
     initialValues.id = nextRecipeId;
+    console.log(initialValues);
     defaultValues = initialValues;
   }
 
   const { register, handleSubmit, control, watch, reset } = useForm<Recipe>({
-    defaultValues: defaultValues ?? initialValues,
+    defaultValues: defaultValues,
   });
 
   useEffect(() => {
@@ -110,22 +111,23 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
   const cookingSteps: Step[] = watch("cookingSteps");
 
   const handleRecipeFormSubmit = (recipeFormData: Recipe) => {
-    const newRecipe: Recipe = createRecipeFromData(recipeFormData);
     let newSavedRecipes: Recipe[] = [];
-    console.log(newRecipe);
+    const newRecipe: Recipe = createRecipeFromData(recipeFormData);
     if (Array.isArray(savedRecipes)) {
-      newSavedRecipes = [...savedRecipes, newRecipe];
-      console.log(newSavedRecipes);
-    } else {
-      newSavedRecipes = [newRecipe];
+      if (recipeToEdit) {
+        newSavedRecipes = [...savedRecipes];
+        newSavedRecipes[recipeId] = newRecipe;
+      } else {
+        newSavedRecipes = [...savedRecipes, newRecipe];
+      }
     }
     setSavedRecipes(newSavedRecipes);
-    console.log("recipe saved");
+    window.location.assign(`/recipe/${recipeId}`);
   };
 
   const createRecipeFromData = (data: Recipe) => {
     const newRecipe: Recipe = {
-      id: data.id,
+      id: recipeId,
       category: data.category,
       title: data.title,
       ingredients: data.ingredients.map((ingredient: any) => ({
