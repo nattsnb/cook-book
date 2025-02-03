@@ -1,7 +1,15 @@
+import { PageWidthContainer } from "../../shared/components/PageWidthContainer.tsx";
+import { StyledCategoryBodyContainer } from "./CategoryView.styled.tsx";
+import { CategoriesList } from "../../components/CategoriesList";
+import { CategoryContent } from "../../components/CategoryContent";
+
 export function CategoryView() {
   return (
-    <div>
-      <p>category view placeholder</p>
-    </div>
+    <PageWidthContainer>
+      <StyledCategoryBodyContainer>
+        <CategoriesList />
+        <CategoryContent />
+      </StyledCategoryBodyContainer>
+    </PageWidthContainer>
   );
 }
