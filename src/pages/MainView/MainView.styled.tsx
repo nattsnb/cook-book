@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import { ButtonLikeImageLink } from "../../components/ButtonLikeImageLink";
+import { ButtonLikeImageLink } from "../../shared/components/ButtonLikeImageLink.tsx";
 
 export const StyledMainBody = styled("div")`
   background-color: ${({ theme }) => theme.palette.secondary.main};
@@ -28,22 +28,22 @@ export const StyledButtonContainer = styled("div")`
 export const StyledButtonLikeImageLink = styled(ButtonLikeImageLink)`
   display: inline-block;
 
-  max-width: 360px;
+  width: 360px;
 
   ${({ theme }) => theme.breakpoints.down("xl")} {
-    max-width: 350px;
+    width: 350px;
   }
 
   ${({ theme }) => theme.breakpoints.down("lg")} {
-    max-width: 300px;
+    width: 300px;
   }
 
   ${({ theme }) => theme.breakpoints.down("md")} {
-    max-width: 350px;
+    width: 350px;
   }
 
   ${({ theme }) => theme.breakpoints.down("sm")} {
-    max-width: 280px;
+    width: 280px;
   }
 `;
 
@@ -57,9 +57,6 @@ export const StyledCategoriesContainer = styled("div")`
 
   ${({ theme }) => theme.breakpoints.down("lg")} {
     padding: ${({ theme }) => theme.spacing(5)};
-  }
-
-  ${({ theme }) => theme.breakpoints.down("md")} {
   }
 `;
 
