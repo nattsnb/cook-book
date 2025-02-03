@@ -19,13 +19,11 @@ import {
   StyledAddButton,
   TopMarginCentralContainer,
   CentralContainer,
-  StyledTitleButtonImage,
-  BottomMarginCentralContainer,
   StyledSubmitButton,
   StyledTextarea,
   StyledIdContainer,
 } from "./RecipeForm.styled.tsx";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
 import { RecipeContext } from "../../App.tsx";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
@@ -36,37 +34,59 @@ const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
 
 const RATING: number[] = Array.from({ length: 11 }, (_, i) => i * 0.5);
 
-export function RecipeForm() {
+interface RecipeFormProps {
+  recipeToEdit?: Recipe;
+}
+
+const initialValues: Recipe = {
+  id: null,
+  category: null,
+  title: "",
+  photoURL: "",
+  rating: null,
+  numberOfPortions: null,
+  cookingTimeInMinutes: null,
+  ingredients: [
+    {
+      id: 0,
+      amount: null,
+      unit: "",
+      name: "",
+      isAllergen: null,
+    },
+  ],
+  cookingSteps: [
+    {
+      id: 0,
+      step: "",
+    },
+  ],
+};
+
+export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
   const { savedRecipes, setSavedRecipes } =
     useContext<RecipeContextType>(RecipeContext);
-  let recipeId = savedRecipes ? savedRecipes.length : 0;
 
-  const { register, handleSubmit, control, watch } = useForm<Recipe>({
-    defaultValues: {
-      id: recipeId,
-      category: null,
-      title: "",
-      photoURL: "",
-      rating: null,
-      numberOfPortions: null,
-      cookingTimeInMinutes: null,
-      ingredients: [
-        {
-          id: 0,
-          amount: null,
-          unit: "",
-          name: "",
-          isAllergen: null,
-        },
-      ],
-      cookingSteps: [
-        {
-          id: 0,
-          step: "",
-        },
-      ],
-    },
+  let defaultValues = null;
+  let recipeId = null;
+
+  if (recipeToEdit) {
+    defaultValues = recipeToEdit;
+    recipeId = savedRecipes ? savedRecipes.length : 0;
+  } else {
+    const nextRecipeId = savedRecipes ? savedRecipes.length : 0;
+    recipeId = nextRecipeId;
+    initialValues.id = nextRecipeId;
+    defaultValues = initialValues;
+  }
+
+  const { register, handleSubmit, control, watch, reset } = useForm<Recipe>({
+    defaultValues: defaultValues ?? initialValues,
   });
+
+  useEffect(() => {
+    reset(defaultValues);
+  }, [defaultValues]);
 
   const {
     fields: ingredientFields,
@@ -105,7 +125,7 @@ export function RecipeForm() {
 
   const createRecipeFromData = (data: Recipe) => {
     const newRecipe: Recipe = {
-      id: recipeId,
+      id: data.id,
       category: data.category,
       title: data.title,
       ingredients: data.ingredients.map((ingredient: any) => ({
@@ -143,9 +163,6 @@ export function RecipeForm() {
 
   return (
     <StyledFormContainer>
-      <BottomMarginCentralContainer>
-        <StyledTitleButtonImage />
-      </BottomMarginCentralContainer>
       <StyledForm onSubmit={handleSubmit(handleRecipeFormSubmit)}>
         <ComponentContainer>
           <StyledFormLineContainer>

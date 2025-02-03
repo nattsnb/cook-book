@@ -1,5 +1,4 @@
 import { Divider, styled } from "@mui/material";
-import addButtonImage from "../../images/addButton.png";
 import submitButtonImage from "../../images/submitButton.png";
 
 export const StyledFormLineContainer = styled("div")`
@@ -274,45 +273,10 @@ export const TopMarginCentralContainer = styled("div")`
   }
 `;
 
-export const BottomMarginCentralContainer = styled("div")`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: ${({ theme }) => theme.spacing(20)};
-  ${({ theme }) => theme.breakpoints.down("lg")} {
-    margin-bottom: ${({ theme }) => theme.spacing(15)};
-  }
-  ${({ theme }) => theme.breakpoints.down("md")} {
-    margin-bottom: ${({ theme }) => theme.spacing(15)};
-  }
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    margin-bottom: ${({ theme }) => theme.spacing(10)};
-  }
-`;
-
 export const CentralContainer = styled("div")`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-export const StyledTitleButtonImage = styled("img")`
-  background-image: url(${addButtonImage});
-
-  background-size: cover;
-  background-position: center;
-  width: 540px;
-  height: 190px;
-
-  ${({ theme }) => theme.breakpoints.down("md")} {
-    width: 405px;
-    height: 135px;
-  }
-
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    width: 324px;
-    height: 108px;
-  }
 `;
 
 export const StyledSubmitButton = styled("button")`

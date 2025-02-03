@@ -39,7 +39,7 @@ export const InfoBox = forwardRef<HTMLDivElement, RecipeInfoBoxProps>(
     return (
       <ComponentContainer ref={infoRef as React.RefObject<HTMLDivElement>}>
         <StyledInfoBoxWrapper>
-          <Link>
+          <Link href={`/editRecipeForm/${recipe.id}`}>
             <LinkContentContainer>
               <StyledCircleSmallIcon />
               <p>Edit</p>

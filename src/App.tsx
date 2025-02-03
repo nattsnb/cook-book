@@ -10,16 +10,14 @@ import { RecipeView } from "./pages/RecipeView";
 import { FormView } from "./pages/FormView";
 import "./playfairDisplay.css";
 import { Recipe, RECIPES_STORAGE_KEY } from "./shared/types/Recipe.ts";
+import { EditView } from "./pages/EditView";
 
 export const RecipeContext = createContext<RecipeContextType>({
-  isEditModeOn: false,
-  setIsEditModeOn: () => {},
   savedRecipes: [],
   setSavedRecipes: () => {},
 });
 
 function App() {
-  const [isEditModeOn, setIsEditModeOn] = useState<boolean>(true);
   const [savedRecipes, setSavedRecipes] = useState<Recipe[] | null>(null);
 
   useEffect(function loadRecipesFromLocalStorageOnInit() {
@@ -48,8 +46,6 @@ function App() {
     <BrowserRouter>
       <RecipeContext.Provider
         value={{
-          isEditModeOn,
-          setIsEditModeOn,
           savedRecipes,
           setSavedRecipes,
         }}
@@ -61,6 +57,7 @@ function App() {
               <Route path="/category/:categoryId" element={<CategoryView />} />
               <Route path="/recipe/:recipeId" element={<RecipeView />} />
               <Route path="/newRecipeForm/" element={<FormView />} />
+              <Route path="/editRecipeForm/:recipeId" element={<EditView />} />
             </Routes>
           </Layout>
         </ThemeProvider>

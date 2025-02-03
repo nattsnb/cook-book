@@ -4,7 +4,7 @@ import { Step } from "./Step.ts";
 export const RECIPES_STORAGE_KEY = "savedRecipes";
 
 export interface Recipe {
-  id: number;
+  id: number | null;
   category: number | null;
   title: string;
   ingredients: Ingredient[];

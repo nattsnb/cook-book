@@ -1,5 +1,4 @@
 import { styled } from "@mui/material";
-import addButtonImage from "../../images/addButton.png";
 
 export const StyledFormBody = styled("div")`
   display: flex;
@@ -11,8 +10,9 @@ export const StyledFormBody = styled("div")`
 
 export const TopMarginCentralContainer = styled("div")`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   margin-top: ${({ theme }) => theme.spacing(20)};
   ${({ theme }) => theme.breakpoints.down("lg")} {
     margin-top: ${({ theme }) => theme.spacing(15)};
@@ -22,24 +22,5 @@ export const TopMarginCentralContainer = styled("div")`
   }
   ${({ theme }) => theme.breakpoints.down("sm")} {
     margin-top: ${({ theme }) => theme.spacing(10)};
-  }
-`;
-
-export const StyledTitleButtonImage = styled("img")`
-  background-image: url(${addButtonImage});
-
-  background-size: cover;
-  background-position: center;
-  width: 540px;
-  height: 190px;
-
-  ${({ theme }) => theme.breakpoints.down("md")} {
-    width: 405px;
-    height: 135px;
-  }
-
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    width: 324px;
-    height: 108px;
   }
 `;
