@@ -1,4 +1,4 @@
-import { InfoBox } from "./infoBox.tsx";
+import { InfoBox } from "./InfoBox.tsx";
 import { Recipe } from "../../shared/types/Recipe.ts";
 import { useRef } from "react";
 import { NavigationButtons } from "../NavigationButons";

@@ -1,12 +1,9 @@
 import { Recipe } from "../../shared/types/Recipe.ts";
 import React, { forwardRef } from "react";
 import { Typography } from "@mui/material";
-import {
-  StyledComponentContainer,
-  StyledEntryContainer,
-  StyledDivider,
-} from "./RecipeCard.styled.tsx";
+import { StyledEntryContainer, StyledDivider } from "./RecipeCard.styled.tsx";
 import pluralize from "pluralize";
+import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";
 
 interface IngredientsProps {
   recipe: Recipe;
@@ -28,7 +25,7 @@ export const Ingredients = forwardRef<HTMLDivElement, IngredientsProps>(
       }
     });
     return (
-      <StyledComponentContainer
+      <ComponentContainer
         ref={ingredientsRef as React.RefObject<HTMLDivElement>}
       >
         <Typography variant="h3">Ingredients</Typography>
@@ -40,7 +37,7 @@ export const Ingredients = forwardRef<HTMLDivElement, IngredientsProps>(
             </StyledEntryContainer>
           );
         })}
-      </StyledComponentContainer>
+      </ComponentContainer>
     );
   },
 );

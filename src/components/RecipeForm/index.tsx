@@ -30,6 +30,7 @@ import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
 import { RecipeContext } from "../../App.tsx";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
 import { Step } from "../../shared/types/Step.ts";
+import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";
 
 const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
 
@@ -146,56 +147,58 @@ export function RecipeForm() {
         <StyledTitleButtonImage />
       </BottomMarginCentralContainer>
       <StyledForm onSubmit={handleSubmit(handleRecipeFormSubmit)}>
-        <StyledFormLineContainer>
-          <StyledLabelAndNumberInputContainer>
-            <label>ID:</label>
-            <StyledIdContainer>{recipeId}</StyledIdContainer>
-          </StyledLabelAndNumberInputContainer>
-          <StyledLabelAndStringInputContainer>
-            <label>Tittle:</label>
-            <StyledStringInput {...register("title")} required />
-          </StyledLabelAndStringInputContainer>
-        </StyledFormLineContainer>
-        <StyledFormLineContainer>
-          <StyledLabelAndStringInputContainer>
-            <label>Photo URL:</label>
-            <StyledStringInput {...register("photoURL")} required />
-          </StyledLabelAndStringInputContainer>
-        </StyledFormLineContainer>
-        <StyledFormLineContainer>
-          <StyledLabelAndSelectContainer>
-            <label>Choose category:</label>
-            <StyledSelect {...register("category")} required>
-              {categoriesDropdownItems}
-            </StyledSelect>
-          </StyledLabelAndSelectContainer>
-        </StyledFormLineContainer>
-        <StyledFormLineWrapContainer>
-          <StyledLabelAndSelectContainer>
-            <label>Rating:</label>
-            <StyledSelect {...register("rating")}>
-              {ratingDropdownItems}
-            </StyledSelect>
-          </StyledLabelAndSelectContainer>
-          <StyledLabelAndNumberInputContainer>
-            <label>Portions:</label>
-            <StyledNumberInput
-              type="number"
-              {...register("numberOfPortions")}
-              required
-            />
-          </StyledLabelAndNumberInputContainer>
-          <StyledLabelAndNumberInputContainer>
-            <label>Cooking time:</label>
-            <StyledNumberInput
-              type="number"
-              {...register("cookingTimeInMinutes")}
-              required
-            />
-          </StyledLabelAndNumberInputContainer>
-          <label>min</label>
-        </StyledFormLineWrapContainer>
-        <section>
+        <ComponentContainer>
+          <StyledFormLineContainer>
+            <StyledLabelAndNumberInputContainer>
+              <label>ID:</label>
+              <StyledIdContainer>{recipeId}</StyledIdContainer>
+            </StyledLabelAndNumberInputContainer>
+            <StyledLabelAndStringInputContainer>
+              <label>Tittle:</label>
+              <StyledStringInput {...register("title")} required />
+            </StyledLabelAndStringInputContainer>
+          </StyledFormLineContainer>
+          <StyledFormLineContainer>
+            <StyledLabelAndStringInputContainer>
+              <label>Photo URL:</label>
+              <StyledStringInput {...register("photoURL")} required />
+            </StyledLabelAndStringInputContainer>
+          </StyledFormLineContainer>
+          <StyledFormLineContainer>
+            <StyledLabelAndSelectContainer>
+              <label>Choose category:</label>
+              <StyledSelect {...register("category")} required>
+                {categoriesDropdownItems}
+              </StyledSelect>
+            </StyledLabelAndSelectContainer>
+          </StyledFormLineContainer>
+          <StyledFormLineWrapContainer>
+            <StyledLabelAndSelectContainer>
+              <label>Rating:</label>
+              <StyledSelect {...register("rating")}>
+                {ratingDropdownItems}
+              </StyledSelect>
+            </StyledLabelAndSelectContainer>
+            <StyledLabelAndNumberInputContainer>
+              <label>Portions:</label>
+              <StyledNumberInput
+                type="number"
+                {...register("numberOfPortions")}
+                required
+              />
+            </StyledLabelAndNumberInputContainer>
+            <StyledLabelAndNumberInputContainer>
+              <label>Cooking time:</label>
+              <StyledNumberInput
+                type="number"
+                {...register("cookingTimeInMinutes")}
+                required
+              />
+            </StyledLabelAndNumberInputContainer>
+            <label>min</label>
+          </StyledFormLineWrapContainer>
+        </ComponentContainer>
+        <ComponentContainer>
           <Typography variant="h3">Ingredients</Typography>
           <StyledDivider />
           {ingredientFields.map((ingredientField, index) => {
@@ -269,8 +272,8 @@ export function RecipeForm() {
               Add ingredient
             </StyledAddButton>
           </CentralContainer>
-        </section>
-        <section>
+        </ComponentContainer>
+        <ComponentContainer>
           <Typography variant="h3">Cooking steps</Typography>
           <StyledDivider />
           {stepFields.map((stepField, index) => {
@@ -308,7 +311,7 @@ export function RecipeForm() {
               Add step
             </StyledAddButton>
           </TopMarginCentralContainer>
-        </section>
+        </ComponentContainer>
         <TopMarginCentralContainer>
           <StyledSubmitButton type="submit">
             <img />

@@ -243,7 +243,7 @@ export const StyledIngredientEntry = styled("div")`
 export const StyledAddButton = styled("button")`
   width: 280px;
   color: ${({ theme }) => theme.palette.secondary.contrastText};
-  background-color: ${({ theme }) => theme.palette.secondary.dark};
+  background-color: ${({ theme }) => theme.palette.primary.light};
   border-radius: ${({ theme }) => theme.spacing(3)};
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   ${({ theme }) => theme.breakpoints.down("lg")} {

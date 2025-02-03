@@ -1,7 +1,6 @@
 import {
   StyledAllergensContainer,
   StyledAllergensTypography,
-  StyledComponentContainer,
   StyledCircularButton,
   StyledInfoBoxWrapper,
   StyledSmallDivider,
@@ -17,6 +16,7 @@ import { Ingredient } from "../../shared/types/Ingredient.ts";
 import React, { forwardRef } from "react";
 import { CATEGORIES } from "../../constans/categories.ts";
 import { Link, Typography } from "@mui/material";
+import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";
 
 interface RecipeInfoBoxProps {
   recipe: Recipe;
@@ -37,9 +37,7 @@ export const InfoBox = forwardRef<HTMLDivElement, RecipeInfoBoxProps>(
     const categoryName: string = category ? category.alt : "Unknown Category";
 
     return (
-      <StyledComponentContainer
-        ref={infoRef as React.RefObject<HTMLDivElement>}
-      >
+      <ComponentContainer ref={infoRef as React.RefObject<HTMLDivElement>}>
         <StyledInfoBoxWrapper>
           <Link>
             <LinkContentContainer>
@@ -78,7 +76,7 @@ export const InfoBox = forwardRef<HTMLDivElement, RecipeInfoBoxProps>(
             </ButtonAndLabelContainer>
           </StyledCircularButtonsContainer>
         </StyledRowOfCircularButtonsContainer>
-      </StyledComponentContainer>
+      </ComponentContainer>
     );
   },
 );
