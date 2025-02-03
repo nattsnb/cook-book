@@ -71,6 +71,17 @@ export const StyledTitleContainer = styled("div")`
 export const StyledRecipesContainer = styled("div")`
   display: flex;
   flex-direction: column;
+  padding-left: ${({ theme }) => theme.spacing(25)};
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    padding-left: ${({ theme }) => theme.spacing(20)};
+  }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    padding-left: ${({ theme }) => theme.spacing(15)};
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    padding-left: ${({ theme }) => theme.spacing(10)};
+  }
 `;
 
 export const StyledCircleSmallIcon = styled(CircleIcon)`
@@ -82,4 +93,25 @@ export const StyledCircleLargeIcon = styled(CircleIcon)`
   font-size: 8px;
   color: ${({ theme }) => theme.palette.primary.dark};
   padding: 0 ${({ theme }) => theme.spacing(2)};
+`;
+
+export const StyledRecipeLinkContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  margin-top: ${({ theme }) => theme.spacing(12)};
+  font-size: 32px;
+  text-transform: capitalize;
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    margin-top: ${({ theme }) => theme.spacing(10)};
+    font-size: 28px;
+  }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    margin-top: ${({ theme }) => theme.spacing(8)};
+    font-size: 24px;
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    margin-top: ${({ theme }) => theme.spacing(5)};
+    font-size: 22px;
+  }
 `;

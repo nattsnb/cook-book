@@ -8,13 +8,15 @@ import {
   StyledTitleContainer,
   StyledCircleSmallIcon,
   StyledCircleLargeIcon,
+  StyledRecipeLinkContainer,
 } from "./CategoryView.styled.tsx";
 import { CATEGORIES } from "../../constans/categories.ts";
-import { Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import { useContext } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
 import { RecipeContext } from "../../App.tsx";
 import { useParams } from "react-router-dom";
+import { Recipe } from "../../shared/types/Recipe.ts";
 
 type ParamsInterface = {
   categoryId: string;
@@ -31,9 +33,21 @@ export function CategoryView() {
     (category) => category.id === categoryId,
   ) || { alt: "No category found" };
 
-  // NAPRAWIC TA FUNKCJE
-  // const recipesToDisplay: Recipe[] = savedRecipes?.filter((recipe) => recipe.category === categoryId) || [];
-  console.log(savedRecipes);
+  let recipesToDisplay: Recipe[] = [];
+  if (savedRecipes) {
+    recipesToDisplay = savedRecipes?.filter(
+      (recipe) => Number(recipe.category) === categoryId,
+    );
+    recipesToDisplay.sort((a: Recipe, b: Recipe) => {
+      if (a.title.slice(1) < b.title.slice(1)) {
+        return -1;
+      }
+      if (a.title.slice(1) > b.title.slice(1)) {
+        return 1;
+      }
+      return 0;
+    });
+  }
 
   return (
     <PageWidthContainer>
@@ -57,7 +71,15 @@ export function CategoryView() {
             <StyledCircleLargeIcon />
             <StyledCircleSmallIcon />
           </StyledTitleContainer>
-          <StyledRecipesContainer></StyledRecipesContainer>
+          <StyledRecipesContainer>
+            {recipesToDisplay.map((recipe, index) => {
+              return (
+                <StyledRecipeLinkContainer key={index}>
+                  <Link href={`/recipe/${recipe.id}`}>{recipe.title}</Link>
+                </StyledRecipeLinkContainer>
+              );
+            })}
+          </StyledRecipesContainer>
         </StyledCategoryContentContainer>
       </StyledCategoryBodyContainer>
     </PageWidthContainer>
