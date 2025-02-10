@@ -14,11 +14,9 @@ export const StyledLinkBarContainer = styled("div")(
 
 export const StyledButton = styled("button")(
   ({ theme }) => `
-  font-family: "Playfair Display", serif;
-  font-size: 20px;
+  
   width: 100%;
   ${theme.breakpoints.down("sm")} {
-    font-size: 15px;
     width: 100%;
   }
   background-color: initial;
@@ -28,7 +26,23 @@ export const StyledButton = styled("button")(
     ${theme.palette.primary.dark}
   );
   box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px;
-  color: ${theme.palette.secondary.light};
   border: 0;
+`,
+);
+
+export const StyledLink = styled("a")(
+  ({ theme }) =>
+    ` 
+  text-decoration: none;
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+
+  ${theme.breakpoints.down("sm")} {
+    font-size: 15px;
+  }
+  
+  color: ${theme.palette.secondary.light};
+  
+  
 `,
 );

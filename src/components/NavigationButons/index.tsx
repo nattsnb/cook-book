@@ -1,45 +1,23 @@
-import { RefObject } from "react";
 import {
   StyledLinkBarContainer,
   StyledButton,
+  StyledLink,
 } from "./NavigationButtons.styled.tsx";
 
-interface NavigationButtonsProps {
-  infoRef: RefObject<HTMLDivElement>;
-  galleryRef: RefObject<HTMLDivElement>;
-  ingredientsRef: RefObject<HTMLDivElement>;
-  stepsRef: RefObject<HTMLDivElement>;
-}
-
-export function NavigationButtons({
-  infoRef,
-  galleryRef,
-  ingredientsRef,
-  stepsRef,
-}: NavigationButtonsProps) {
-  const handleScroll = (ref: RefObject<HTMLDivElement>) => {
-    if (ref?.current) {
-      window.scrollTo({
-        top: ref.current.offsetTop,
-        left: 0,
-        behavior: "smooth",
-      });
-    } else {
-      console.warn("Ref is null or undefined:", ref);
-    }
-  };
-
+export function NavigationButtons() {
   return (
     <StyledLinkBarContainer>
-      <StyledButton onClick={() => handleScroll(infoRef)}>Info</StyledButton>
-      <StyledButton onClick={() => handleScroll(galleryRef)}>
-        Gallery
+      <StyledButton>
+        <StyledLink href="#infoDiv">Info</StyledLink>
       </StyledButton>
-      <StyledButton onClick={() => handleScroll(ingredientsRef)}>
-        Ingredients
+      <StyledButton>
+        <StyledLink href="#galleryDiv">Gallery</StyledLink>
       </StyledButton>
-      <StyledButton onClick={() => handleScroll(stepsRef)}>
-        Cooking steps
+      <StyledButton>
+        <StyledLink href="#ingredientsDiv">Ingredients</StyledLink>
+      </StyledButton>
+      <StyledButton>
+        <StyledLink href="#stepsDiv">Cooking steps</StyledLink>
       </StyledButton>
     </StyledLinkBarContainer>
   );
