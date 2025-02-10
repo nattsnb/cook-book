@@ -1,31 +1,36 @@
 import { styled } from "@mui/material";
 import addButtonImage from "../../images/addButton.png";
 
-export const StyledFormBody = styled("div")`
+export const StyledFormBody = styled("div")(
+  ({ theme }) => `
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.palette.secondary.main};
+  background-color: ${theme.palette.secondary.main};
   box-shadow: inset 0px 8px 12px rgba(0, 0, 0, 0.4);
   width: 100%;
-`;
+`,
+);
 
-export const TopMarginCentralContainer = styled("div")`
+export const TopMarginCentralContainer = styled("div")(
+  ({ theme }) => `
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: ${({ theme }) => theme.spacing(20)};
-  ${({ theme }) => theme.breakpoints.down("lg")} {
-    margin-top: ${({ theme }) => theme.spacing(15)};
+  margin-top: ${theme.spacing(20)};
+  ${theme.breakpoints.down("lg")} {
+    margin-top: ${theme.spacing(15)};
   }
-  ${({ theme }) => theme.breakpoints.down("md")} {
-    margin-top: ${({ theme }) => theme.spacing(15)};
+  ${theme.breakpoints.down("md")} {
+    margin-top: ${theme.spacing(15)};
   }
-  ${({ theme }) => theme.breakpoints.down("sm")} {
-    margin-top: ${({ theme }) => theme.spacing(10)};
+  ${theme.breakpoints.down("sm")} {
+    margin-top: ${theme.spacing(10)};
   }
-`;
+`,
+);
 
-export const StyledTitleButtonImage = styled("img")`
+export const StyledTitleButtonImage = styled("img")(
+  ({ theme }) => `
   background-image: url(${addButtonImage});
 
   background-size: cover;
@@ -33,13 +38,14 @@ export const StyledTitleButtonImage = styled("img")`
   width: 540px;
   height: 190px;
 
-  ${({ theme }) => theme.breakpoints.down("md")} {
+  ${theme.breakpoints.down("md")} {
     width: 405px;
     height: 135px;
   }
 
-  ${({ theme }) => theme.breakpoints.down("sm")} {
+  ${theme.breakpoints.down("sm")} {
     width: 324px;
     height: 108px;
   }
-`;
+`,
+);
