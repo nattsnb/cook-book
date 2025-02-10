@@ -30,8 +30,9 @@ import { RecipeContext } from "../../shared/components/RecipeContextProvider";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
 import { Step } from "../../shared/types/Step.ts";
 import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";
+import { Units } from "../../shared/Units.ts";
 
-const UNITS: string[] = ["ml", "l", "g", "kg", "tsp", "tbsp", "cup", "each"];
+const unitValues = Object.values(Units);
 
 const RATING: number[] = Array.from({ length: 11 }, (_, i) => i * 0.5);
 
@@ -51,7 +52,7 @@ const initialValues: Recipe = {
     {
       id: 0,
       amount: null,
-      unit: "",
+      unit: null,
       name: "",
       isAllergen: null,
     },
@@ -158,14 +159,6 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
     </option>
   ));
 
-  let unitsDropdownItems = UNITS.map((unit, index) => (
-    <option key={index}>{unit}</option>
-  ));
-
-  let ratingDropdownItems = RATING.map((rate, index) => (
-    <option key={index}>{rate}</option>
-  ));
-
   return (
     <StyledFormContainer>
       <StyledForm onSubmit={handleSubmit(handleRecipeFormSubmit)}>
@@ -198,7 +191,9 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
             <StyledLabelAndSelectContainer>
               <StyledLabel>Rating:</StyledLabel>
               <StyledSelect {...register("rating")}>
-                {ratingDropdownItems}
+                {RATING.map((rate, index) => (
+                  <option key={index}>{rate}</option>
+                ))}
               </StyledSelect>
             </StyledLabelAndSelectContainer>
             <StyledLabelAndNumberInputContainer>
@@ -254,7 +249,9 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
                         {...register(`ingredients.${index}.unit`)}
                         required
                       >
-                        {unitsDropdownItems}
+                        {unitValues.map((unit, index) => (
+                          <option key={index}>{unit}</option>
+                        ))}
                       </StyledSelect>
                     </StyledLabelAndSelectContainer>
                     <StyledLabelAndSelectContainer>
@@ -285,7 +282,7 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
                 appendIngredient({
                   id: ingredients.length,
                   amount: null,
-                  unit: "",
+                  unit: null,
                   name: "",
                   isAllergen: null,
                 })

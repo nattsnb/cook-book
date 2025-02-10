@@ -4,6 +4,7 @@ import { StyledEntryContainer, StyledDivider } from "./RecipeCard.styled.tsx";
 import pluralize from "pluralize";
 import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
+import { Units } from "../../shared/Units.ts";
 
 interface IngredientsProps {
   recipe: Recipe;
@@ -13,7 +14,7 @@ export const Ingredients = ({ recipe }: IngredientsProps) => {
   let ingredientsToDisplay: string[] = [];
 
   const pushPrintableVersion = (ingredient: Ingredient) => {
-    if (ingredient.unit === "each") {
+    if (ingredient.unit === Units.EACH) {
       ingredientsToDisplay.push(
         pluralize(ingredient.name, Number(ingredient.amount), true),
       );

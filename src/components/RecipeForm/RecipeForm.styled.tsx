@@ -157,7 +157,6 @@ export const StyledLabelAndNumberInputContainer = styled("div")`
 
 export const StyledLabelAndSelectContainer = styled("div")(
   ({ theme }) => `
-  ${ReusableFormInputStyles({ theme })}
 
   display: flex;
   flex-direction: column;
