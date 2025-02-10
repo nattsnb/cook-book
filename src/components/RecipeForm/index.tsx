@@ -26,7 +26,7 @@ import {
 } from "./RecipeForm.styled.tsx";
 import { useContext, useEffect } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
-import { RecipeContext } from "../../App.tsx";
+import { RecipeContext } from "../../shared/components/RecipeContextProvider";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
 import { Step } from "../../shared/types/Step.ts";
 import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";

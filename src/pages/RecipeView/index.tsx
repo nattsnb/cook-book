@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
-import { RecipeContext } from "../../App.tsx";
+import { RecipeContext } from "../../shared/components/RecipeContextProvider";
 import { Recipe } from "../../shared/types/Recipe.ts";
 import { RecipeCard } from "../../components/RecipeCard";
 import { PageWidthContainer } from "../../shared/components/PageWidthContainer.tsx";

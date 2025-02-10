@@ -14,7 +14,7 @@ import { CATEGORIES } from "../../constans/categories.ts";
 import { Link, Typography } from "@mui/material";
 import { useContext } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
-import { RecipeContext } from "../../App.tsx";
+import { RecipeContext } from "../../shared/components/RecipeContextProvider";
 import { useParams } from "react-router-dom";
 import { Recipe } from "../../shared/types/Recipe.ts";
 
