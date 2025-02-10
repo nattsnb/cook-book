@@ -9,26 +9,10 @@ import {
   StyledCircleSmallIcon,
 } from "../CategoryView/CategoryView.styled.tsx";
 import { Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
-import { useContext } from "react";
-import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
-import { RecipeContext } from "../../shared/components/RecipeContextProvider";
-import { Recipe } from "../../shared/types/Recipe.ts";
-
-type ParamsInterface = {
-  recipeId: string;
-};
+import { getRecipeToDisplayFromParams } from "../../shared/getRecipeToDisplayFromParams.tsx";
 
 export function EditView() {
-  const { savedRecipes } = useContext<RecipeContextType>(RecipeContext);
-  const params = useParams<ParamsInterface>();
-  let recipeId = null;
-  if (params.recipeId) {
-    recipeId = Number(params.recipeId);
-  }
-  const recipeToDisplay = savedRecipes?.find(
-    (recipe: Recipe) => recipe.id === recipeId,
-  );
+  const recipeToDisplay = getRecipeToDisplayFromParams();
 
   return (
     <PageWidthContainer>
