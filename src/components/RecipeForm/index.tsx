@@ -22,6 +22,7 @@ import {
   StyledSubmitButton,
   StyledTextarea,
   StyledIdContainer,
+  StyledLabel,
 } from "./RecipeForm.styled.tsx";
 import { useContext, useEffect } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
@@ -81,8 +82,10 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
     defaultValues = initialValues;
   }
 
+  // const defaultValues2 = recipeToEdit ?? initialValues
+
   const { register, handleSubmit, control, watch, reset } = useForm<Recipe>({
-    defaultValues: defaultValues,
+    defaultValues: recipeToEdit ?? initialValues,
   });
 
   useEffect(() => {
@@ -169,23 +172,23 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
         <ComponentContainer>
           <StyledFormLineContainer>
             <StyledLabelAndNumberInputContainer>
-              <label>ID:</label>
+              <StyledLabel>ID:</StyledLabel>
               <StyledIdContainer>{recipeId}</StyledIdContainer>
             </StyledLabelAndNumberInputContainer>
             <StyledLabelAndStringInputContainer>
-              <label>Tittle:</label>
+              <StyledLabel>Tittle:</StyledLabel>
               <StyledStringInput {...register("title")} required />
             </StyledLabelAndStringInputContainer>
           </StyledFormLineContainer>
           <StyledFormLineContainer>
             <StyledLabelAndStringInputContainer>
-              <label>Photo URL:</label>
+              <StyledLabel>Photo URL:</StyledLabel>
               <StyledStringInput {...register("photoURL")} required />
             </StyledLabelAndStringInputContainer>
           </StyledFormLineContainer>
           <StyledFormLineContainer>
             <StyledLabelAndSelectContainer>
-              <label>Choose category:</label>
+              <StyledLabel>Choose category:</StyledLabel>
               <StyledSelect {...register("category")} required>
                 {categoriesDropdownItems}
               </StyledSelect>
@@ -193,13 +196,13 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
           </StyledFormLineContainer>
           <StyledFormLineWrapContainer>
             <StyledLabelAndSelectContainer>
-              <label>Rating:</label>
+              <StyledLabel>Rating:</StyledLabel>
               <StyledSelect {...register("rating")}>
                 {ratingDropdownItems}
               </StyledSelect>
             </StyledLabelAndSelectContainer>
             <StyledLabelAndNumberInputContainer>
-              <label>Portions:</label>
+              <StyledLabel>Portions:</StyledLabel>
               <StyledNumberInput
                 type="number"
                 {...register("numberOfPortions")}
@@ -207,14 +210,14 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
               />
             </StyledLabelAndNumberInputContainer>
             <StyledLabelAndNumberInputContainer>
-              <label>Cooking time:</label>
+              <StyledLabel>Cooking time:</StyledLabel>
               <StyledNumberInput
                 type="number"
                 {...register("cookingTimeInMinutes")}
                 required
               />
             </StyledLabelAndNumberInputContainer>
-            <label>min</label>
+            <StyledLabel>min</StyledLabel>
           </StyledFormLineWrapContainer>
         </ComponentContainer>
         <ComponentContainer>
@@ -226,11 +229,11 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
                 <StyledIngredientEntry>
                   <StyledFormLineContainer>
                     <StyledLabelAndNumberInputContainer>
-                      <label>ID:</label>
+                      <StyledLabel>ID:</StyledLabel>
                       <StyledIdContainer>{index + 1}</StyledIdContainer>
                     </StyledLabelAndNumberInputContainer>
                     <StyledLabelAndStringInputContainer>
-                      <label>Name:</label>
+                      <StyledLabel>Name:</StyledLabel>
                       <StyledStringInput
                         {...register(`ingredients.${index}.name`)}
                         required
@@ -239,14 +242,14 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
                   </StyledFormLineContainer>
                   <StyledFormLineWrapContainer>
                     <StyledLabelAndNumberInputContainer>
-                      <label>Amount:</label>
+                      <StyledLabel>Amount:</StyledLabel>
                       <StyledNumberInput
                         {...register(`ingredients.${index}.amount`)}
                         required
                       />
                     </StyledLabelAndNumberInputContainer>
                     <StyledLabelAndSelectContainer>
-                      <label>Size:</label>
+                      <StyledLabel>Size:</StyledLabel>
                       <StyledSelect
                         {...register(`ingredients.${index}.unit`)}
                         required
@@ -255,7 +258,7 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
                       </StyledSelect>
                     </StyledLabelAndSelectContainer>
                     <StyledLabelAndSelectContainer>
-                      <label>Is allergen:</label>
+                      <StyledLabel>Is allergen:</StyledLabel>
                       <StyledSelect
                         {...register(`ingredients.${index}.isAllergen`)}
                         required
@@ -300,11 +303,11 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
               <div key={stepField.id}>
                 <StyledFormLineContainer>
                   <StyledLabelAndNumberInputContainer>
-                    <label>ID:</label>
+                    <StyledLabel>ID:</StyledLabel>
                     <StyledIdContainer>{index + 1}</StyledIdContainer>
                   </StyledLabelAndNumberInputContainer>
                   <StyledLabelAndStringInputContainer>
-                    <label>Cooking step:</label>
+                    <StyledLabel>Cooking step:</StyledLabel>
                     <StyledTextarea
                       rows={3}
                       cols={10}

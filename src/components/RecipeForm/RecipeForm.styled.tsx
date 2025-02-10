@@ -1,5 +1,9 @@
-import { Divider, styled } from "@mui/material";
+import { Divider, styled, Theme } from "@mui/material";
 import submitButtonImage from "../../images/submitButton.png";
+
+interface ThemeProps {
+  theme: Theme;
+}
 
 export const StyledFormLineContainer = styled("div")`
   max-width: 95%;
@@ -15,6 +19,76 @@ export const StyledFormLineWrapContainer = styled("div")`
   margin-top: ${({ theme }) => theme.spacing(2)};
   align-items: flex-end;
   flex-wrap: wrap;
+`;
+
+const reusableButtonStyles = ({ theme }: ThemeProps) => `
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    min-height: 72px;
+    ${theme.breakpoints.down("lg")} {
+      font-size: 20px;
+      min-height: 54px;
+    }
+    ${theme.breakpoints.down("md")} {
+      font-size: 18px;
+      min-height: 40px;
+    }
+    ${theme.breakpoints.down("sm")} {
+      font-size: 14px;
+      min-height: 36px;
+    }
+    `;
+
+const ReusableFormInputStyles = ({ theme }: ThemeProps) => `
+    font-size: 28px;
+    height: 50px;
+    padding: ${theme.spacing(4)}
+      ${theme.spacing(4)} ${theme.spacing(1)}
+      ${theme.spacing(4)};
+    border: 1px solid ${theme.palette.secondary.dark};
+    border-radius: 4px;
+    margin-left: ${theme.spacing(5)};
+    margin-right: ${theme.spacing(4)};
+
+    ${theme.breakpoints.down("lg")} {
+      font-size: 24px;
+      height: 40px;
+      padding: ${theme.spacing(3)}
+        ${theme.spacing(3)} ${theme.spacing(0)}
+        ${theme.spacing(3)};
+      margin-left: ${theme.spacing(4)};
+      margin-right: ${theme.spacing(3)};
+    }
+    ${theme.breakpoints.down("md")} {
+      font-size: 16px;
+      height: 30px;
+      padding: ${theme.spacing(2)}
+        ${theme.spacing(2)} ${theme.spacing(0)}
+        ${theme.spacing(2)};
+      margin-left: ${theme.spacing(3)};
+      margin-right: ${theme.spacing(2)};
+    }
+    ${theme.breakpoints.down("sm")} {
+      font-size: 14px;
+      height: 25px;
+      margin-left: ${theme.spacing(2)};
+      margin-right: ${theme.spacing(1)};
+    }
+    `;
+
+export const StyledLabel = styled("label")`
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+
+  ${({ theme }) => theme.breakpoints.down("lg")} {
+    font-size: 20px;
+  }
+  ${({ theme }) => theme.breakpoints.down("md")} {
+    font-size: 18px;
+  }
+  ${({ theme }) => theme.breakpoints.down("sm")} {
+    font-size: 14px;
+  }
 `;
 
 export const StyledFormContainer = styled("div")`
@@ -43,89 +117,12 @@ export const StyledFormContainer = styled("div")`
     margin: ${({ theme }) => theme.spacing(8)}
       ${({ theme }) => theme.spacing(4)};
   }
-
-  button {
-    font-family: "Playfair Display", serif;
-    font-size: 24px;
-    min-height: 72px;
-    ${({ theme }) => theme.breakpoints.down("lg")} {
-      font-size: 20px;
-      min-height: 54px;
-    }
-    ${({ theme }) => theme.breakpoints.down("md")} {
-      font-size: 18px;
-      min-height: 40px;
-    }
-    ${({ theme }) => theme.breakpoints.down("sm")} {
-      font-size: 14px;
-      min-height: 36px;
-    }
-  }
-
-  label {
-    font-family: "Playfair Display", serif;
-    font-size: 24px;
-
-    ${({ theme }) => theme.breakpoints.down("lg")} {
-      font-size: 20px;
-    }
-    ${({ theme }) => theme.breakpoints.down("md")} {
-      font-size: 18px;
-    }
-    ${({ theme }) => theme.breakpoints.down("sm")} {
-      font-size: 14px;
-    }
-  }
-
-  input,
-  select,
-  textarea {
-    font-size: 28px;
-    height: 50px;
-    padding: ${({ theme }) => theme.spacing(4)}
-      ${({ theme }) => theme.spacing(4)} ${({ theme }) => theme.spacing(1)}
-      ${({ theme }) => theme.spacing(4)};
-    border: 1px solid ${({ theme }) => theme.palette.secondary.dark};
-    border-radius: 4px;
-    margin-left: ${({ theme }) => theme.spacing(5)};
-    margin-right: ${({ theme }) => theme.spacing(4)};
-
-    ${({ theme }) => theme.breakpoints.down("lg")} {
-      font-size: 24px;
-      height: 40px;
-      padding: ${({ theme }) => theme.spacing(3)}
-        ${({ theme }) => theme.spacing(3)} ${({ theme }) => theme.spacing(0)}
-        ${({ theme }) => theme.spacing(3)};
-      margin-left: ${({ theme }) => theme.spacing(4)};
-      margin-right: ${({ theme }) => theme.spacing(3)};
-    }
-    ${({ theme }) => theme.breakpoints.down("md")} {
-      font-size: 16px;
-      height: 30px;
-      padding: ${({ theme }) => theme.spacing(2)}
-        ${({ theme }) => theme.spacing(2)} ${({ theme }) => theme.spacing(0)}
-        ${({ theme }) => theme.spacing(2)};
-      margin-left: ${({ theme }) => theme.spacing(3)};
-      margin-right: ${({ theme }) => theme.spacing(2)};
-    }
-    ${({ theme }) => theme.breakpoints.down("sm")} {
-      font-size: 14px;
-      height: 25px;
-      margin-left: ${({ theme }) => theme.spacing(2)};
-      margin-right: ${({ theme }) => theme.spacing(1)};
-    }
-  }
-
-  textarea {
-    white-space: pre;
-    overflow-wrap: normal;
-    overflow-x: scroll;
-  }
 `;
 
 export const StyledNumberInput = styled("input")`
-  width: 80px;
+  ${({ theme }) => ReusableFormInputStyles({ theme })}
 
+  width: 80px;
   ${({ theme }) => theme.breakpoints.down("lg")} {
     width: 70px;
   }
@@ -149,6 +146,8 @@ export const StyledLabelAndNumberInputContainer = styled("div")`
 `;
 
 export const StyledLabelAndSelectContainer = styled("div")`
+  ${({ theme }) => ReusableFormInputStyles({ theme })}
+
   display: flex;
   flex-direction: column;
   min-width: 90px;
@@ -165,11 +164,15 @@ export const StyledLabelAndSelectContainer = styled("div")`
 `;
 
 export const StyledStringInput = styled("input")`
+  ${({ theme }) => ReusableFormInputStyles({ theme })}
+
   width: 100%;
   min-width: 120px;
 `;
 
 export const StyledSelect = styled("select")`
+  ${({ theme }) => ReusableFormInputStyles({ theme })}
+
   min-width: 35px;
   max-width: 200px;
   min-height: 72px;
@@ -185,8 +188,10 @@ export const StyledSelect = styled("select")`
 `;
 
 export const StyledDeleteButton = styled("button")`
-  margin-left: ${({ theme }) => theme.spacing(2)};
+  
+  ${({ theme }) => reusableButtonStyles({ theme })}
 
+  margin-left: ${({ theme }) => theme.spacing(2)};
   width: 105px;
   ${({ theme }) => theme.breakpoints.down("lg")} {
     width: 90px;
@@ -240,6 +245,8 @@ export const StyledIngredientEntry = styled("div")`
 `;
 
 export const StyledAddButton = styled("button")`
+  ${({ theme }) => reusableButtonStyles({ theme })}
+  
   width: 280px;
   color: ${({ theme }) => theme.palette.secondary.contrastText};
   background-color: ${({ theme }) => theme.palette.primary.light};
@@ -280,6 +287,8 @@ export const CentralContainer = styled("div")`
 `;
 
 export const StyledSubmitButton = styled("button")`
+  ${({ theme }) => reusableButtonStyles({ theme })}
+
   border: none;
   background-image: url(${submitButtonImage});
   background-size: cover;
@@ -300,10 +309,12 @@ export const StyledSubmitButton = styled("button")`
 `;
 
 export const StyledTextarea = styled("textarea")`
+  ${({ theme }) => ReusableFormInputStyles({ theme })}
+
+  white-space: pre;
+  overflow-wrap: normal;
+  overflow-x: scroll;
   resize: none;
-  overflow: hidden;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
 `;
 
 export const StyledIdContainer = styled("div")`

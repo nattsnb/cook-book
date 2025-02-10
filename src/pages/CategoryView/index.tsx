@@ -31,6 +31,15 @@ export function CategoryView() {
   if (params.categoryId) {
     categoryId = Number(params.categoryId);
   }
+
+  // use memo do ogarniania ifow
+  // const recipeToDisplay2 = useMemo(() =>
+  //   categoryId === 0
+  //     ? savedRecipes
+  //     : savedRecipes?.filter(
+  //       (recipe) => Number(recipe.category) === categoryId,
+  // ), [])
+
   const activeCategory = CATEGORIES?.find(
     (category) => category.id === categoryId,
   ) || { alt: "No category found" };
