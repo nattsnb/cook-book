@@ -79,7 +79,6 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
     const nextRecipeId = savedRecipes ? savedRecipes.length : 0;
     recipeId = nextRecipeId;
     initialValues.id = nextRecipeId;
-    console.log(initialValues);
     defaultValues = initialValues;
   }
 

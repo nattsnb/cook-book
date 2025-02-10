@@ -12,7 +12,7 @@ import {
 } from "./CategoryView.styled.tsx";
 import { CATEGORIES } from "../../constans/categories.ts";
 import { Link, Typography } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
 import { RecipeContext } from "../../shared/components/RecipeContextProvider";
 import { useParams } from "react-router-dom";
@@ -25,36 +25,32 @@ type ParamsInterface = {
 export function CategoryView() {
   const { savedRecipes } = useContext<RecipeContextType>(RecipeContext);
   const params = useParams<ParamsInterface>();
-  let categoryId = null;
-  let recipesToDisplay: Recipe[] = [];
 
-  if (params.categoryId) {
-    categoryId = Number(params.categoryId);
-  }
-
-  // use memo do ogarniania ifow
-  // const recipeToDisplay2 = useMemo(() =>
-  //   categoryId === 0
-  //     ? savedRecipes
-  //     : savedRecipes?.filter(
-  //       (recipe) => Number(recipe.category) === categoryId,
-  // ), [])
-
-  const activeCategory = CATEGORIES?.find(
-    (category) => category.id === categoryId,
-  ) || { alt: "No category found" };
-
-  if (categoryId === 0 && savedRecipes) {
-    recipesToDisplay = savedRecipes;
-  } else if (savedRecipes) {
-    recipesToDisplay = savedRecipes?.filter(
-      (recipe) => Number(recipe.category) === categoryId,
-    );
-  }
-
-  recipesToDisplay = [...recipesToDisplay].sort((a: Recipe, b: Recipe) =>
-    a.title.toLowerCase().localeCompare(b.title.toLowerCase()),
+  const categoryId = useMemo(
+    () => (params.categoryId ? Number(params.categoryId) : null),
+    [params],
   );
+
+  const activeCategory = useMemo(
+    () =>
+      CATEGORIES?.find((category) => category.id === categoryId) || {
+        alt: "No category found",
+      },
+    [categoryId],
+  );
+
+  const recipesToDisplay = useMemo(() => {
+    if (!savedRecipes) return [];
+    const filteredRecipes =
+      categoryId === 0
+        ? savedRecipes
+        : savedRecipes?.filter(
+            (recipe) => Number(recipe.category) === categoryId,
+          );
+    return [...filteredRecipes].sort((a: Recipe, b: Recipe) =>
+      a.title.toLowerCase().localeCompare(b.title.toLowerCase()),
+    );
+  }, [categoryId, savedRecipes]);
 
   return (
     <PageWidthContainer>
@@ -74,7 +70,9 @@ export function CategoryView() {
           <StyledTitleContainer>
             <StyledCircleSmallIcon />
             <StyledCircleLargeIcon />
-            <Typography variant="h2">{activeCategory.alt}</Typography>
+            <Typography variant="h2">
+              {activeCategory.alt ?? "No active category"}
+            </Typography>
             <StyledCircleLargeIcon />
             <StyledCircleSmallIcon />
           </StyledTitleContainer>
