@@ -207,6 +207,7 @@ export const StyledDeleteButton = styled("button")(
   
   ${ReusableButtonStyles({ theme })}
 
+margin-top: ${theme.spacing(3)};
   margin-left: ${theme.spacing(2)};
   width: 105px;
   ${theme.breakpoints.down("lg")} {
@@ -346,8 +347,8 @@ export const StyledTextarea = styled("textarea")(
 `,
 );
 
-export const StyledIdContainer = styled("div")(
-  ({ theme }) => `
+const reusableIdContainerStyles = ({ theme }: ThemeProps) => `
+  font-family: "Arial", serif;
   font-size: 28px;
   height: 50px;
   padding: ${theme.spacing(4)} ${theme.spacing(4)}
@@ -356,6 +357,11 @@ export const StyledIdContainer = styled("div")(
   border-radius: 4px;
   margin-left: ${theme.spacing(5)};
   margin-right: ${theme.spacing(4)};
+  text-align: center; 
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  width: 20px;
 
   ${theme.breakpoints.down("lg")} {
     font-size: 24px;
@@ -375,11 +381,27 @@ export const StyledIdContainer = styled("div")(
     margin-left: ${theme.spacing(3)};
     margin-right: ${theme.spacing(2)};
   }
-  $theme.breakpoints.down("sm")} {
+  ${theme.breakpoints.down("sm")} {
     font-size: 14px;
     height: 25px;
     margin-left: ${theme.spacing(2)};
     margin-right: ${theme.spacing(1)};
   }
+`;
+
+export const StyledIdContainer = styled("div")(
+  ({ theme }) => `
+  ${reusableIdContainerStyles({ theme })}
+`,
+);
+
+export const StyledIdInput = styled("input")(
+  ({ theme }) => `
+  
+  ${reusableIdContainerStyles({ theme })}
+  background: transparent; 
+  text-align: center;
+  cursor: default; 
+  pointer-events: none; 
 `,
 );

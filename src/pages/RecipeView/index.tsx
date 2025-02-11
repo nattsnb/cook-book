@@ -1,7 +1,7 @@
 import { RecipeCard } from "../../components/RecipeCard";
 import { PageWidthContainer } from "../../shared/components/PageWidthContainer.tsx";
 import { StyledRecipeBody } from "./RecipeView.styled.tsx";
-import { getRecipeToDisplayFromParams } from "../../shared/getRecipeToDisplayFromParams.tsx";
+import { getRecipeToDisplayFromParams } from "../../shared/getRecipeToDisplayFromParams.ts";
 
 export function RecipeView() {
   const recipeToDisplay = getRecipeToDisplayFromParams();

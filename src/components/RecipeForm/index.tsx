@@ -23,74 +23,47 @@ import {
   StyledTextarea,
   StyledIdContainer,
   StyledLabel,
+  StyledIdInput,
 } from "./RecipeForm.styled.tsx";
-import { useContext, useEffect } from "react";
-import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
-import { RecipeContext } from "../../shared/components/RecipeContextProvider";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
 import { Step } from "../../shared/types/Step.ts";
 import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";
 import { Units } from "../../shared/Units.ts";
+import { initialValues } from "../../constans/initialValues.ts";
+import { useContext, useEffect, useMemo } from "react";
+import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
+import { RecipeContext } from "../../shared/components/RecipeContextProvider";
 
 const unitValues = Object.values(Units);
 
 const RATING: number[] = Array.from({ length: 11 }, (_, i) => i * 0.5);
 
 interface RecipeFormProps {
-  recipeToEdit?: Recipe;
+  initialRecipe?: Recipe;
+  handleRecipeFormSubmit: (recipe: Recipe) => void;
 }
 
-const initialValues: Recipe = {
-  id: 0,
-  category: null,
-  title: "",
-  photoURL: "",
-  rating: null,
-  numberOfPortions: null,
-  cookingTimeInMinutes: null,
-  ingredients: [
-    {
-      id: 0,
-      amount: null,
-      unit: null,
-      name: "",
-      isAllergen: null,
-    },
-  ],
-  cookingSteps: [
-    {
-      id: 0,
-      step: "",
-    },
-  ],
-};
+export function RecipeForm({
+  initialRecipe,
+  handleRecipeFormSubmit,
+}: RecipeFormProps) {
+  const { savedRecipes } = useContext<RecipeContextType>(RecipeContext);
+  const { register, handleSubmit, control, watch, setValue, reset } =
+    useForm<Recipe>({
+      defaultValues: initialRecipe ?? initialValues,
+    });
 
-export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
-  const { savedRecipes, setSavedRecipes } =
-    useContext<RecipeContextType>(RecipeContext);
-
-  let defaultValues = null;
-  let recipeId = 0;
-
-  if (recipeToEdit) {
-    defaultValues = recipeToEdit;
-    recipeId = recipeToEdit.id;
-  } else {
-    const nextRecipeId = savedRecipes ? savedRecipes.length : 0;
-    recipeId = nextRecipeId;
-    initialValues.id = nextRecipeId;
-    defaultValues = initialValues;
-  }
-
-  // const defaultValues2 = recipeToEdit ?? initialValues
-
-  const { register, handleSubmit, control, watch, reset } = useForm<Recipe>({
-    defaultValues: recipeToEdit ?? initialValues,
-  });
+  const recipeId = useMemo(() => {
+    const recipeCount = savedRecipes ? savedRecipes.length : 0;
+    return initialRecipe?.id ?? recipeCount + 1;
+  }, [savedRecipes]);
 
   useEffect(() => {
-    reset(defaultValues);
-  }, [defaultValues]);
+    setValue("id", recipeId);
+    if (initialRecipe) {
+      reset(initialRecipe);
+    }
+  }, [initialRecipe, reset, recipeId]);
 
   const {
     fields: ingredientFields,
@@ -113,45 +86,6 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
   const ingredients: Ingredient[] = watch("ingredients");
   const cookingSteps: Step[] = watch("cookingSteps");
 
-  const handleRecipeFormSubmit = (recipeFormData: Recipe) => {
-    let newSavedRecipes: Recipe[] = [];
-    const newRecipe: Recipe = createRecipeFromData(recipeFormData);
-    if (Array.isArray(savedRecipes)) {
-      if (recipeToEdit) {
-        newSavedRecipes = [...savedRecipes];
-        newSavedRecipes[recipeId] = newRecipe;
-      } else {
-        newSavedRecipes = [...savedRecipes, newRecipe];
-      }
-    }
-    setSavedRecipes(newSavedRecipes);
-    window.location.assign(`/recipe/${recipeId}`);
-  };
-
-  const createRecipeFromData = (data: Recipe) => {
-    const newRecipe: Recipe = {
-      id: recipeId,
-      category: data.category,
-      title: data.title,
-      ingredients: data.ingredients.map((ingredient: any) => ({
-        id: ingredient.id,
-        amount: ingredient.amount,
-        unit: ingredient.unit,
-        name: ingredient.name,
-        isAllergen: ingredient.isAllergen,
-      })),
-      cookingSteps: data.cookingSteps.map((step: any) => ({
-        id: step.id,
-        step: step.step,
-      })),
-      photoURL: data.photoURL,
-      numberOfPortions: data.numberOfPortions,
-      cookingTimeInMinutes: data.cookingTimeInMinutes,
-      rating: data.rating,
-    };
-    return newRecipe;
-  };
-
   let categoriesDropdownItems = CATEGORIES.slice(1).map((category) => (
     <option key={category.id} value={category.id}>
       {category.alt}
@@ -165,7 +99,7 @@ export function RecipeForm({ recipeToEdit }: RecipeFormProps) {
           <StyledFormLineContainer>
             <StyledLabelAndNumberInputContainer>
               <StyledLabel>ID:</StyledLabel>
-              <StyledIdContainer>{recipeId}</StyledIdContainer>
+              <StyledIdInput {...register("id")} value={recipeId} readOnly />
             </StyledLabelAndNumberInputContainer>
             <StyledLabelAndStringInputContainer>
               <StyledLabel>Tittle:</StyledLabel>
