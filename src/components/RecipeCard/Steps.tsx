@@ -11,12 +11,10 @@ export const Steps = ({ recipe }: StepsProps) => (
   <ComponentContainer id="stepsDiv">
     <Typography variant="h3">Cooking steps</Typography>
     <StyledDivider />
-    {recipe.cookingSteps.map((step, index) => {
-      return (
-        <StyledEntryContainer key={index}>
-          {index + 1 + ". " + step.step}
-        </StyledEntryContainer>
-      );
-    })}
+    {recipe.cookingSteps.map((step, index) => (
+      <StyledEntryContainer key={index}>
+        {index + 1 + ". " + step.step}
+      </StyledEntryContainer>
+    ))}
   </ComponentContainer>
 );

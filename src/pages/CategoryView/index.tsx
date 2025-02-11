@@ -77,13 +77,11 @@ export function CategoryView() {
             <StyledCircleSmallIcon />
           </StyledTitleContainer>
           <StyledRecipesContainer>
-            {recipesToDisplay.map((recipe, index) => {
-              return (
-                <StyledRecipeLinkContainer key={index}>
-                  <Link href={`/recipe/${recipe.id}`}>{recipe.title}</Link>
-                </StyledRecipeLinkContainer>
-              );
-            })}
+            {recipesToDisplay.map((recipe, index) => (
+              <StyledRecipeLinkContainer key={index}>
+                <Link href={`/recipe/${recipe.id}`}>{recipe.title}</Link>
+              </StyledRecipeLinkContainer>
+            ))}
           </StyledRecipesContainer>
         </StyledCategoryContentContainer>
       </StyledCategoryBodyContainer>

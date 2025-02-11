@@ -86,12 +86,6 @@ export function RecipeForm({
   const ingredients: Ingredient[] = watch("ingredients");
   const cookingSteps: Step[] = watch("cookingSteps");
 
-  let categoriesDropdownItems = CATEGORIES.slice(1).map((category) => (
-    <option key={category.id} value={category.id}>
-      {category.alt}
-    </option>
-  ));
-
   return (
     <StyledFormContainer>
       <StyledForm onSubmit={handleSubmit(handleRecipeFormSubmit)}>
@@ -116,7 +110,11 @@ export function RecipeForm({
             <StyledLabelAndSelectContainer>
               <StyledLabel>Choose category:</StyledLabel>
               <StyledSelect {...register("category")} required>
-                {categoriesDropdownItems}
+                {CATEGORIES.slice(1).map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.alt}
+                  </option>
+                ))}
               </StyledSelect>
             </StyledLabelAndSelectContainer>
           </StyledFormLineContainer>
@@ -151,63 +149,61 @@ export function RecipeForm({
         <ComponentContainer>
           <Typography variant="h3">Ingredients</Typography>
           <StyledDivider />
-          {ingredientFields.map((ingredientField, index) => {
-            return (
-              <div key={ingredientField.id}>
-                <StyledIngredientEntry>
-                  <StyledFormLineContainer>
-                    <StyledLabelAndNumberInputContainer>
-                      <StyledLabel>ID:</StyledLabel>
-                      <StyledIdContainer>{index + 1}</StyledIdContainer>
-                    </StyledLabelAndNumberInputContainer>
-                    <StyledLabelAndStringInputContainer>
-                      <StyledLabel>Name:</StyledLabel>
-                      <StyledStringInput
-                        {...register(`ingredients.${index}.name`)}
-                        required
-                      />
-                    </StyledLabelAndStringInputContainer>
-                  </StyledFormLineContainer>
-                  <StyledFormLineWrapContainer>
-                    <StyledLabelAndNumberInputContainer>
-                      <StyledLabel>Amount:</StyledLabel>
-                      <StyledNumberInput
-                        {...register(`ingredients.${index}.amount`)}
-                        required
-                      />
-                    </StyledLabelAndNumberInputContainer>
-                    <StyledLabelAndSelectContainer>
-                      <StyledLabel>Size:</StyledLabel>
-                      <StyledSelect
-                        {...register(`ingredients.${index}.unit`)}
-                        required
-                      >
-                        {unitValues.map((unit, index) => (
-                          <option key={index}>{unit}</option>
-                        ))}
-                      </StyledSelect>
-                    </StyledLabelAndSelectContainer>
-                    <StyledLabelAndSelectContainer>
-                      <StyledLabel>Is allergen:</StyledLabel>
-                      <StyledSelect
-                        {...register(`ingredients.${index}.isAllergen`)}
-                        required
-                      >
-                        <option value="true">true</option>
-                        <option value="false">false</option>
-                      </StyledSelect>
-                    </StyledLabelAndSelectContainer>
-                    <StyledDeleteButton
-                      type="button"
-                      onClick={() => removeIngredient(index)}
+          {ingredientFields.map((ingredientField, index) => (
+            <div key={ingredientField.id}>
+              <StyledIngredientEntry>
+                <StyledFormLineContainer>
+                  <StyledLabelAndNumberInputContainer>
+                    <StyledLabel>ID:</StyledLabel>
+                    <StyledIdContainer>{index + 1}</StyledIdContainer>
+                  </StyledLabelAndNumberInputContainer>
+                  <StyledLabelAndStringInputContainer>
+                    <StyledLabel>Name:</StyledLabel>
+                    <StyledStringInput
+                      {...register(`ingredients.${index}.name`)}
+                      required
+                    />
+                  </StyledLabelAndStringInputContainer>
+                </StyledFormLineContainer>
+                <StyledFormLineWrapContainer>
+                  <StyledLabelAndNumberInputContainer>
+                    <StyledLabel>Amount:</StyledLabel>
+                    <StyledNumberInput
+                      {...register(`ingredients.${index}.amount`)}
+                      required
+                    />
+                  </StyledLabelAndNumberInputContainer>
+                  <StyledLabelAndSelectContainer>
+                    <StyledLabel>Size:</StyledLabel>
+                    <StyledSelect
+                      {...register(`ingredients.${index}.unit`)}
+                      required
                     >
-                      Delete
-                    </StyledDeleteButton>
-                  </StyledFormLineWrapContainer>
-                </StyledIngredientEntry>
-              </div>
-            );
-          })}
+                      {unitValues.map((unit, index) => (
+                        <option key={index}>{unit}</option>
+                      ))}
+                    </StyledSelect>
+                  </StyledLabelAndSelectContainer>
+                  <StyledLabelAndSelectContainer>
+                    <StyledLabel>Is allergen:</StyledLabel>
+                    <StyledSelect
+                      {...register(`ingredients.${index}.isAllergen`)}
+                      required
+                    >
+                      <option value="true">true</option>
+                      <option value="false">false</option>
+                    </StyledSelect>
+                  </StyledLabelAndSelectContainer>
+                  <StyledDeleteButton
+                    type="button"
+                    onClick={() => removeIngredient(index)}
+                  >
+                    Delete
+                  </StyledDeleteButton>
+                </StyledFormLineWrapContainer>
+              </StyledIngredientEntry>
+            </div>
+          ))}
           <CentralContainer>
             <StyledAddButton
               type="button"

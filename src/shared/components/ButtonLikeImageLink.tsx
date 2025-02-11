@@ -11,10 +11,8 @@ export const ButtonLikeImageLink = ({
   href,
   src,
   className,
-}: ButtonLikeImageLinkProps) => {
-  return (
-    <a href={href}>
-      <img alt={alt} src={src} className={className} />
-    </a>
-  );
-};
+}: ButtonLikeImageLinkProps) => (
+  <a href={href}>
+    <img alt={alt} src={src} className={className} />
+  </a>
+);
