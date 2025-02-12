@@ -1,7 +1,7 @@
 import { Recipe } from "../shared/types/Recipe.ts";
 
 export const initialValues: Recipe = {
-  id: 0,
+  id: "",
   category: null,
   title: "",
   photoURL: "",

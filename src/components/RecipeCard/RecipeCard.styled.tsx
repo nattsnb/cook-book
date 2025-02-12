@@ -171,31 +171,6 @@ export const StyledDivider = styled(Divider)(
 `,
 );
 
-export const StyledSmallDivider = styled(Divider)(
-  ({ theme }) => `
-  height: 1px;
-  background-color: ${theme.palette.primary.dark};
-  width: 100px;
-  margin-top: ${theme.spacing(4)};
-  margin-bottom: ${theme.spacing(4)};
-  ${theme.breakpoints.down("lg")} {
-    width: 80px;
-    margin-top: ${theme.spacing(3)};
-    margin-bottom: ${theme.spacing(3)};
-  }
-  ${theme.breakpoints.down("md")} {
-    width: 60px;
-    margin-top: ${theme.spacing(2)};
-    margin-bottom: ${theme.spacing(2)};
-  }
-  ${theme.breakpoints.down("sm")} {
-    width: 40px;
-    margin-top: ${theme.spacing(1)};
-    margin-bottom: ${theme.spacing(1)};
-  }
-`,
-);
-
 export const StyledInfoBoxWrapper = styled("div")`
   display: flex;
   flex-direction: column;

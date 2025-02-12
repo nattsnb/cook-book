@@ -23,16 +23,14 @@ import {
   StyledTextarea,
   StyledIdContainer,
   StyledLabel,
-  StyledIdInput,
 } from "./RecipeForm.styled.tsx";
 import { Ingredient } from "../../shared/types/Ingredient.ts";
 import { Step } from "../../shared/types/Step.ts";
 import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";
 import { Units } from "../../shared/Units.ts";
 import { initialValues } from "../../constans/initialValues.ts";
-import { useContext, useEffect, useMemo } from "react";
-import { RecipeContextType } from "../../shared/types/RecipeContextType.ts";
-import { RecipeContext } from "../../shared/components/RecipeContextProvider";
+import { useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 const unitValues = Object.values(Units);
 
@@ -47,16 +45,12 @@ export function RecipeForm({
   initialRecipe,
   handleRecipeFormSubmit,
 }: RecipeFormProps) {
-  const { savedRecipes } = useContext<RecipeContextType>(RecipeContext);
   const { register, handleSubmit, control, watch, setValue, reset } =
     useForm<Recipe>({
       defaultValues: initialRecipe ?? initialValues,
     });
 
-  const recipeId = useMemo(() => {
-    const recipeCount = savedRecipes ? savedRecipes.length : 0;
-    return initialRecipe?.id ?? recipeCount + 1;
-  }, [savedRecipes]);
+  const recipeId = uuidv4();
 
   useEffect(() => {
     setValue("id", recipeId);
@@ -91,10 +85,6 @@ export function RecipeForm({
       <StyledForm onSubmit={handleSubmit(handleRecipeFormSubmit)}>
         <ComponentContainer>
           <StyledFormLineContainer>
-            <StyledLabelAndNumberInputContainer>
-              <StyledLabel>ID:</StyledLabel>
-              <StyledIdInput {...register("id")} value={recipeId} readOnly />
-            </StyledLabelAndNumberInputContainer>
             <StyledLabelAndStringInputContainer>
               <StyledLabel>Tittle:</StyledLabel>
               <StyledStringInput {...register("title")} required />

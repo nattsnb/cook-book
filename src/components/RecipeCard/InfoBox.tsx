@@ -3,7 +3,6 @@ import {
   StyledAllergensTypography,
   StyledCircularButton,
   StyledInfoBoxWrapper,
-  StyledSmallDivider,
   StyledCircularButtonsContainer,
   StyledRowOfCircularButtonsContainer,
   CircularButtonLabel,
@@ -44,8 +43,6 @@ export const InfoBox = ({ recipe }: RecipeInfoBoxProps) => {
             <StyledCircleSmallIcon />
           </LinkContentContainer>
         </Link>
-        <Typography variant="h4">Recipe No. {recipe.id}</Typography>
-        <StyledSmallDivider />
         <Typography variant="h2">{recipe.title}</Typography>
         <Typography variant="h3">{categoryName}</Typography>
         <StyledAllergensContainer>

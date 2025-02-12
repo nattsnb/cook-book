@@ -377,13 +377,3 @@ export const StyledIdContainer = styled("div")(
   ${reusableIdContainerStyles({ theme })}
 `,
 );
-
-export const StyledIdInput = styled("input")(
-  ({ theme }) => `
-  ${reusableIdContainerStyles({ theme })}
-  background: transparent; 
-  text-align: center;
-  cursor: default; 
-  pointer-events: none; 
-`,
-);

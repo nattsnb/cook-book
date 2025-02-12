@@ -13,7 +13,7 @@ export function getRecipeToDisplayFromParams() {
   const params = useParams<ParamsInterface>();
   let recipeId = null;
   if (params.recipeId) {
-    recipeId = Number(params.recipeId);
+    recipeId = String(params.recipeId);
   }
   return savedRecipes?.find((recipe: Recipe) => recipe.id === recipeId);
 }
