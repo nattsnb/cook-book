@@ -26,18 +26,13 @@ export function CategoryView() {
   const { savedRecipes } = useContext<RecipeContextType>(RecipeContext);
   const params = useParams<ParamsInterface>();
 
-  const categoryId = useMemo(
-    () => (params.categoryId ? Number(params.categoryId) : null),
-    [params],
-  );
+  const categoryId = params.categoryId ? Number(params.categoryId) : null;
 
-  const activeCategory = useMemo(
-    () =>
-      CATEGORIES?.find((category) => category.id === categoryId) || {
-        alt: "No category found",
-      },
-    [categoryId],
-  );
+  const activeCategory = CATEGORIES?.find(
+    (category) => category.id === categoryId,
+  ) || {
+    alt: "No category found",
+  };
 
   const recipesToDisplay = useMemo(() => {
     if (!savedRecipes) return [];

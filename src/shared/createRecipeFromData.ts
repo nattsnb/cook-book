@@ -1,7 +1,7 @@
 import { Recipe } from "./types/Recipe.ts";
 
 export const createRecipeFromData = (data: Recipe) => {
-  const newRecipe: Recipe = {
+  return {
     id: data.id,
     category: data.category,
     title: data.title,
@@ -21,5 +21,4 @@ export const createRecipeFromData = (data: Recipe) => {
     cookingTimeInMinutes: data.cookingTimeInMinutes,
     rating: data.rating,
   };
-  return newRecipe;
 };
