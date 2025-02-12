@@ -11,8 +11,7 @@ import {
   StyledFooterDivider,
 } from "../Footer/Footer.styled.tsx";
 import { useLocation } from "react-router-dom";
-
-const pathToMain = "/";
+import { RoutesPaths } from "../../shared/RoutesPaths.ts";
 
 export function Banner() {
   const location = useLocation();
@@ -22,7 +21,7 @@ export function Banner() {
       <StyledTitleContainer>
         <StyledTypographyAboveH1>The</StyledTypographyAboveH1>
         <Typography variant="h1">Cook Book</Typography>
-        {location.pathname !== pathToMain && (
+        {location.pathname !== RoutesPaths.MAIN && (
           <Link href={"/"}>
             <LinkContentContainer>
               <StyledCircleSmallIcon />

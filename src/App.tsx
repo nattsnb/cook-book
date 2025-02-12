@@ -9,6 +9,7 @@ import { FormView } from "./pages/FormView";
 import "./playfairDisplay.css";
 import { EditView } from "./pages/EditView";
 import { RecipeContextProvider } from "./shared/components/RecipeContextProvider";
+import { RoutesPaths } from "./shared/RoutesPaths.ts";
 
 function App() {
   return (
@@ -17,11 +18,14 @@ function App() {
         <ThemeProvider theme={theme}>
           <Layout>
             <Routes>
-              <Route path="/" element={<MainView />} />
-              <Route path="/category/:categoryId" element={<CategoryView />} />
-              <Route path="/recipe/:recipeId" element={<RecipeView />} />
-              <Route path="/newRecipeForm/" element={<FormView />} />
-              <Route path="/editRecipeForm/:recipeId" element={<EditView />} />
+              <Route path={RoutesPaths.MAIN} element={<MainView />} />
+              <Route path={RoutesPaths.CATEGORY} element={<CategoryView />} />
+              <Route path={RoutesPaths.RECIPE} element={<RecipeView />} />
+              <Route
+                path={RoutesPaths.NEW_RECIPE_FORM}
+                element={<FormView />}
+              />
+              <Route path={RoutesPaths.EDIT_RECIPE} element={<EditView />} />
             </Routes>
           </Layout>
         </ThemeProvider>
