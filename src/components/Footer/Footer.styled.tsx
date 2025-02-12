@@ -5,11 +5,9 @@ export const StyledTypographyFooter = styled(Typography)(
   ({ theme }) => `
   color: ${theme.palette.secondary.light};
   font-family: "Playfair Display", serif;
-
   ${theme.breakpoints.down("md")} {
     font-size: 14px;
   }
-
   ${theme.breakpoints.down("sm")} {
     font-size: 10px;
   }

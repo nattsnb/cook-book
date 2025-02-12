@@ -32,17 +32,14 @@ export const TopMarginCentralContainer = styled("div")(
 export const StyledTitleButtonImage = styled("img")(
   ({ theme }) => `
   background-image: url(${addButtonImage});
-
   background-size: cover;
   background-position: center;
   width: 540px;
   height: 190px;
-
   ${theme.breakpoints.down("md")} {
     width: 405px;
     height: 135px;
   }
-
   ${theme.breakpoints.down("sm")} {
     width: 324px;
     height: 108px;

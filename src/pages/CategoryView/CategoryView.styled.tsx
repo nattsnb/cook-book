@@ -20,7 +20,6 @@ export const StyledCategoriesContainer = styled("div")(
   background-color: ${theme.palette.background.default};
   height: 100%;
   min-height: 1200px;
-
   ${theme.breakpoints.down("lg")} {
     min-height: 1000px;
     padding: ${theme.spacing(10)};
@@ -56,6 +55,7 @@ export const StyledCategoryContentContainer = styled("div")`
   flex-direction: column;
   width: 100%;
 `;
+
 export const StyledTitleContainer = styled("div")(
   ({ theme }) => `
   display: flex;
@@ -63,7 +63,6 @@ export const StyledTitleContainer = styled("div")(
   align-items: center;
   justify-content: center;
   margin-top: ${theme.spacing(12)};
-
   ${theme.breakpoints.down("lg")} {
     margin-top: ${theme.spacing(10)};
   }
@@ -81,7 +80,6 @@ export const StyledRecipesContainer = styled("div")(
   display: flex;
   flex-direction: column;
   padding-left: ${theme.spacing(25)};
-
   ${theme.breakpoints.down("lg")} {
     padding-left: ${theme.spacing(20)};
   }
@@ -116,7 +114,6 @@ export const StyledRecipeLinkContainer = styled("div")(
   margin-top: ${theme.spacing(12)};
   font-size: 32px;
   text-transform: capitalize;
-
   ${theme.breakpoints.down("lg")} {
     margin-top: ${theme.spacing(10)};
     font-size: 28px;

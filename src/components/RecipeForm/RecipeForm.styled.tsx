@@ -53,7 +53,6 @@ const ReusableFormInputStyles = ({ theme }: ThemeProps) => `
     border-radius: 4px;
     margin-left: ${theme.spacing(5)};
     margin-right: ${theme.spacing(4)};
-
     ${theme.breakpoints.down("lg")} {
       font-size: 24px;
       height: 40px;
@@ -84,7 +83,6 @@ export const StyledLabel = styled("label")(
   ({ theme }) => `
   font-family: "Playfair Display", serif;
   font-size: 24px;
-
   ${theme.breakpoints.down("lg")} {
     font-size: 20px;
   }
@@ -105,7 +103,6 @@ export const StyledFormContainer = styled("div")(
   background-color: ${theme.palette.secondary.light};
   padding: ${theme.spacing(8)} ${theme.spacing(8)};
   margin: ${theme.spacing(8)} ${theme.spacing(14)};
-
   ${theme.breakpoints.down("lg")} {
     padding: ${theme.spacing(12)}
       ${theme.spacing(6)};
@@ -130,7 +127,6 @@ export const StyledFormContainer = styled("div")(
 export const StyledNumberInput = styled("input")(
   ({ theme }) => `
   ${ReusableFormInputStyles({ theme })}
-
   width: 80px;
   ${theme.breakpoints.down("lg")} {
     width: 70px;
@@ -157,7 +153,6 @@ export const StyledLabelAndNumberInputContainer = styled("div")`
 
 export const StyledLabelAndSelectContainer = styled("div")(
   ({ theme }) => `
-
   display: flex;
   flex-direction: column;
   min-width: 90px;
@@ -177,7 +172,6 @@ export const StyledLabelAndSelectContainer = styled("div")(
 export const StyledStringInput = styled("input")(
   ({ theme }) => `
   ${ReusableFormInputStyles({ theme })}
-
   width: 100%;
   min-width: 120px;
 `,
@@ -186,7 +180,6 @@ export const StyledStringInput = styled("input")(
 export const StyledSelect = styled("select")(
   ({ theme }) => `
   ${ReusableFormInputStyles({ theme })}
-
   min-width: 35px;
   max-width: 200px;
   min-height: 72px;
@@ -204,10 +197,8 @@ export const StyledSelect = styled("select")(
 
 export const StyledDeleteButton = styled("button")(
   ({ theme }) => `
-  
   ${ReusableButtonStyles({ theme })}
-
-margin-top: ${theme.spacing(3)};
+  margin-top: ${theme.spacing(3)};
   margin-left: ${theme.spacing(2)};
   width: 105px;
   ${theme.breakpoints.down("lg")} {
@@ -219,7 +210,6 @@ margin-top: ${theme.spacing(3)};
   ${theme.breakpoints.down("sm")} {
     width: 60px;
   }
-}
 `,
 );
 
@@ -269,7 +259,6 @@ export const StyledIngredientEntry = styled("div")(
 export const StyledAddButton = styled("button")(
   ({ theme }) => `
   ${ReusableButtonStyles({ theme })}
-  
   width: 280px;
   color: ${theme.palette.secondary.contrastText};
   background-color: ${theme.palette.primary.light};
@@ -315,20 +304,16 @@ export const CentralContainer = styled("div")`
 export const StyledSubmitButton = styled("button")(
   ({ theme }) => `
   ${ReusableButtonStyles({ theme })}
-
   border: none;
   background-image: url(${submitButtonImage});
   background-size: cover;
   background-position: center;
-
   width: 540px;
   height: 190px;
-
   ${theme.breakpoints.down("md")} {
     width: 405px;
     height: 135px;
   }
-
   ${theme.breakpoints.down("sm")} {
     width: 324px;
     height: 108px;
@@ -339,7 +324,6 @@ export const StyledSubmitButton = styled("button")(
 export const StyledTextarea = styled("textarea")(
   ({ theme }) => `
   ${ReusableFormInputStyles({ theme })}
-
   white-space: pre;
   overflow-wrap: normal;
   overflow-x: scroll;
@@ -362,7 +346,6 @@ const reusableIdContainerStyles = ({ theme }: ThemeProps) => `
   justify-content: center; 
   align-items: center; 
   width: 20px;
-
   ${theme.breakpoints.down("lg")} {
     font-size: 24px;
     height: 40px;
@@ -397,7 +380,6 @@ export const StyledIdContainer = styled("div")(
 
 export const StyledIdInput = styled("input")(
   ({ theme }) => `
-  
   ${reusableIdContainerStyles({ theme })}
   background: transparent; 
   text-align: center;

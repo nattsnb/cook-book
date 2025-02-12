@@ -7,7 +7,6 @@ export const StyledAllergensTypography = styled(Typography)(
   font-size: 16px;
   color: darkred;
   margin-top: ${theme.spacing(4)};
-
   ${theme.breakpoints.down("lg")} {
     font-size: 14px;
     margin-top: ${theme.spacing(3)};
@@ -65,7 +64,6 @@ export const StyledCircularButton = styled(Button)(
   font-size: 30px;
   font-family: "Arial", sans-serif;
   color: ${theme.palette.primary.dark};
-
   ${theme.breakpoints.down("lg")} {
     width: 80px;
     height: 80px;
@@ -86,7 +84,6 @@ export const StyledBodyContainer = styled("div")(
   display: flex;
   flex-direction: row;
   width: 100%;
-
   ${theme.breakpoints.down("md")} {
     flex-direction: column;
     align-items: center;
@@ -104,7 +101,6 @@ export const StyledGalleryContainer = styled("div")(
   border-color: ${theme.palette.primary.main};
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-
   margin: ${theme.spacing(2)};
   ${theme.breakpoints.down("md")} {
     margin: ${theme.spacing(2)} 0;
@@ -219,7 +215,6 @@ export const CircularButtonLabel = styled("div")(
   font-family: "Playfair Display", serif;
   font-size: 18px;
   margin-bottom: ${theme.spacing(4)};
-
   ${theme.breakpoints.down("lg")} {
     font-size: 16px;
   }
@@ -234,7 +229,6 @@ export const LinkContentContainer = styled("div")(
   justify-content: center;
   max-height: 15px;
   margin-bottom: ${theme.spacing(2)};
-
   font-family: "Playfair Display", serif;
   color: ${theme.palette.primary.dark};
   font-size: 16px;

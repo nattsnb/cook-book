@@ -30,7 +30,6 @@ export const LinkContentContainer = styled("div")(
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
   font-family: "Playfair Display", serif;
   color: ${theme.palette.secondary.light};
   font-size: 20px;
