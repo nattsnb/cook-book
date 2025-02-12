@@ -36,7 +36,7 @@ export const InfoBox = ({ recipe }: RecipeInfoBoxProps) => {
   return (
     <ComponentContainer id="infoDiv">
       <StyledInfoBoxWrapper>
-        <Link href={`/editRecipeForm/${recipe.id}`}>
+        <Link href={`/edit-recipe-form/${recipe.id}`}>
           <LinkContentContainer>
             <StyledCircleSmallIcon />
             <p>Edit</p>

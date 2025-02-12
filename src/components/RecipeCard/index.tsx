@@ -10,8 +10,9 @@ import {
 import { Gallery } from "./Gallery.tsx";
 import { useMediaQuery } from "@mui/material";
 import theme from "../../shared/utils/theme.ts";
-import { Ingredients } from "./Ingredients.tsx";
-import { Steps } from "./Steps.tsx";
+import { NumberedList } from "./NumberedList.tsx";
+import { Units } from "../../shared/Units.ts";
+import pluralize from "pluralize";
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -19,6 +20,19 @@ interface RecipeCardProps {
 
 export function RecipeCard({ recipe }: RecipeCardProps) {
   const isViewportSmallerThanMd = useMediaQuery(theme.breakpoints.down("md"));
+  const cookingStepsStringsArray = recipe.cookingSteps.map((step) => step.step);
+
+  const produceIngredientsStringsArray = () => {
+    return recipe.ingredients.map((ingredient) => {
+      if (ingredient.unit === Units.EACH) {
+        return pluralize(ingredient.name, Number(ingredient.amount), true);
+      } else {
+        return `${ingredient.amount} ${ingredient.unit} of ${ingredient.name}`;
+      }
+    });
+  };
+
+  const ingredientsStringsArray = produceIngredientsStringsArray();
 
   return (
     <StyledBodyContainer>
@@ -27,8 +41,14 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
           <NarrowViewContainer>
             <InfoBox recipe={recipe} />
             <Gallery recipe={recipe} />
-            <Ingredients recipe={recipe} />
-            <Steps recipe={recipe} />
+            <NumberedList
+              dataToDisplay={ingredientsStringsArray}
+              title={"Ingredients"}
+            />
+            <NumberedList
+              dataToDisplay={cookingStepsStringsArray}
+              title={"Cooking Steps"}
+            />
           </NarrowViewContainer>
           <NavigationButtons />
         </RecipeCardContainer>
@@ -39,8 +59,14 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
             <Gallery recipe={recipe} />
           </RowOfWideViewContainer>
           <RowOfWideViewContainer>
-            <Ingredients recipe={recipe} />
-            <Steps recipe={recipe} />
+            <NumberedList
+              dataToDisplay={ingredientsStringsArray}
+              title={"Ingredients"}
+            />
+            <NumberedList
+              dataToDisplay={cookingStepsStringsArray}
+              title={"Cooking Steps"}
+            />
           </RowOfWideViewContainer>
         </RecipeCardContainer>
       )}

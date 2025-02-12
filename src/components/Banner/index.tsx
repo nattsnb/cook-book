@@ -22,7 +22,7 @@ export function Banner() {
         <StyledTypographyAboveH1>The</StyledTypographyAboveH1>
         <Typography variant="h1">Cook Book</Typography>
         {location.pathname !== RoutesPaths.MAIN && (
-          <Link href={"/"}>
+          <Link href={RoutesPaths.MAIN}>
             <LinkContentContainer>
               <StyledCircleSmallIcon />
               <StyledCircleLargeIcon />

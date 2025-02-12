@@ -8,6 +8,7 @@ import {
 } from "./MainView.styled.tsx";
 import addButton from "../../images/addButton.png";
 import { CATEGORIES } from "../../constans/categories.ts";
+import { RoutesPaths } from "../../shared/RoutesPaths.ts";
 
 export function MainView() {
   return (
@@ -16,7 +17,7 @@ export function MainView() {
         <StyledButtonContainer>
           <StyledButtonLikeImageLink
             alt="Add new recipe"
-            href="/newRecipeForm/"
+            href={RoutesPaths.NEW_RECIPE_FORM}
             src={addButton}
             className={"StyledFunctionButtonLikeImageLink"}
           />

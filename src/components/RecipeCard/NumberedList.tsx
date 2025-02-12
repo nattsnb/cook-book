@@ -1,20 +1,20 @@
-import { Recipe } from "../../shared/types/Recipe.ts";
 import { Typography } from "@mui/material";
 import { StyledEntryContainer, StyledDivider } from "./RecipeCard.styled.tsx";
 import { ComponentContainer } from "../../shared/components/ComponentContainer.tsx";
 import { v4 as uuidv4 } from "uuid";
 
-interface StepsProps {
-  recipe: Recipe;
+interface NumberedListProps {
+  dataToDisplay: string[];
+  title: string;
 }
 
-export const Steps = ({ recipe }: StepsProps) => (
+export const NumberedList = ({ dataToDisplay, title }: NumberedListProps) => (
   <ComponentContainer id="stepsDiv">
-    <Typography variant="h3">Cooking steps</Typography>
+    <Typography variant="h3">{title}</Typography>
     <StyledDivider />
-    {recipe.cookingSteps.map((step, index) => (
+    {dataToDisplay.map((rowOfData, index) => (
       <StyledEntryContainer key={uuidv4()}>
-        {index + 1 + ". " + step.step}
+        {index + 1 + ". " + rowOfData}
       </StyledEntryContainer>
     ))}
   </ComponentContainer>

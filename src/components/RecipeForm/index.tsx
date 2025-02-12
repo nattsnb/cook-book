@@ -50,7 +50,7 @@ export function RecipeForm({
       defaultValues: initialRecipe ?? initialValues,
     });
 
-  const recipeId = uuidv4();
+  const recipeId = initialRecipe ? initialRecipe.id : uuidv4();
 
   useEffect(() => {
     setValue("id", recipeId);
