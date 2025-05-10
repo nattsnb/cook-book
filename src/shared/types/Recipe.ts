@@ -1,12 +1,16 @@
 import { Ingredient } from "./Ingredient";
-import { Step } from "./step.ts";
+import { Step } from "./Step.ts";
+
+export const RECIPES_STORAGE_KEY = "savedRecipes";
 
 export interface Recipe {
+  id: string;
+  category: number | null;
   title: string;
   ingredients: Ingredient[];
   cookingSteps: Step[];
   photoURL: string;
-  numberOfPortions: number;
-  cookingTimeInMinutes: number;
-  rating: number;
+  numberOfPortions: number | null;
+  cookingTimeInMinutes: number | null;
+  rating: number | null;
 }

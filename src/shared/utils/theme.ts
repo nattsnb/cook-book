@@ -1,21 +1,25 @@
 import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
+const baseTheme = createTheme({
   palette: {
     primary: {
-      light: "#A8D5BA",
-      main: "#5A8D72",
-      dark: "#3B5A47",
+      light: "#6B6A68",
+      main: "#3E3D3A",
+      dark: "#27241A",
       contrastText: "#FFFFFF",
     },
     secondary: {
       lightest: "#EFE5D5",
       light: "#D4C4A8",
-      main: "#B9A688",
+      main: "#CEB78D",
       dark: "#7D4F37",
-      contrastText: "#000000",
+      contrastText: "#FFFFFF",
+    },
+    background: {
+      default: "#27241A",
     },
   },
+  spacing: 4,
   breakpoints: {
     values: {
       xs: 0,
@@ -25,144 +29,132 @@ const theme = createTheme({
       xl: 1279,
     },
   },
+});
+
+const theme = createTheme(baseTheme, {
   typography: {
-    pageTittle: {
-      fontSize: "48px",
+    fontFamily: "Playfair Display, serif",
+    h1: {
+      fontSize: "60px",
       lineHeight: 1.5,
       fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width: 768px)": {
+      color: baseTheme.palette.secondary.light,
+      fontFamily: "'Playfair Display', serif",
+      [baseTheme.breakpoints.down("md")]: {
+        fontSize: "50px",
+      },
+      [baseTheme.breakpoints.down("sm")]: {
+        fontSize: "40px",
+      },
+    },
+    h2: {
+      fontSize: "40px",
+      fontWeight: 500,
+      lineHeight: 1.4,
+      color: baseTheme.palette.primary.dark,
+      textTransform: "capitalize",
+      fontFamily: "'Playfair Display', serif",
+      marginBottom: baseTheme.spacing(4),
+      [baseTheme.breakpoints.down("lg")]: {
+        fontSize: "36px",
+      },
+      [baseTheme.breakpoints.down("md")]: {
+        marginBottom: baseTheme.spacing(2),
         fontSize: "32px",
       },
-    },
-    recipesBarTittle: {
-      fontSize: "24px",
-      lineHeight: 1.5,
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      marginTop: "10px",
-      marginBottom: "8px",
-      "@media (max-width: 768px)": {
-        fontSize: "16px",
+      [baseTheme.breakpoints.down("sm")]: {
+        fontSize: "28px",
       },
     },
-    recipeTittle: {
-      marginRight: "14px",
+    h3: {
       fontSize: "32px",
-      lineHeight: 1.5,
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
+      fontWeight: 300,
+      lineHeight: 1.3,
+      color: baseTheme.palette.primary.dark,
+      fontFamily: "'Playfair Display', serif",
+      [baseTheme.breakpoints.down("lg")]: {
+        fontSize: "28px",
+      },
+      [baseTheme.breakpoints.down("md")]: {
         fontSize: "24px",
       },
-    },
-    ingredientsTittle: {
-      fontSize: "24px",
-      lineHeight: 1.5,
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "18px",
+      [baseTheme.breakpoints.down("sm")]: {
+        fontSize: "20px",
       },
     },
-    allergens: {
-      fontSize: "14px",
-      lineHeight: "30px",
-      fontWeight: 400,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#ff0000",
-      "@media (max-width:  480px)": {
-        fontSize: "12px",
+    h4: {
+      fontSize: "22px",
+      fontWeight: 300,
+      lineHeight: 1.3,
+      color: baseTheme.palette.primary.dark,
+      fontFamily: "'Playfair Display', serif",
+      [baseTheme.breakpoints.down("lg")]: {
+        fontSize: "20px",
       },
-    },
-    recipeSteps: {
-      fontSize: "20px",
-      lineHeight: "30px",
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width: 480px)": {
+      [baseTheme.breakpoints.down("md")]: {
         fontSize: "16px",
       },
-    },
-    stepsCounter: {
-      fontSize: "20px",
-      lineHeight: "30px",
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "16px",
+      [baseTheme.breakpoints.down("sm")]: {
+        fontSize: "14px",
       },
     },
-    formSection: {
-      fontSize: "20px",
-      lineHeight: "30px",
-      fontWeight: 600,
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "22px",
+  },
+  variables: {
+    sidebarWidth: "240px",
+    headerHeight: "64px",
+    input: {
+      height: {
+        small: "32px",
+        medium: "40px",
+        large: "48px",
+      },
+      padding: {
+        small: "8px",
+        medium: "12px",
+        large: "16px",
       },
     },
-    formErrorMessage: {
-      fontSize: "12px",
-      lineHeight: "16px",
-      fontFamily: `"Poppins", sans-serif`,
-      color: "#2c1b14",
-      "@media (max-width:  480px)": {
-        fontSize: "10px",
+    button: {
+      height: {
+        small: "32px",
+        medium: "40px",
+        large: "48px",
+      },
+      padding: {
+        small: "8px 16px",
+        medium: "12px 24px",
+        large: "16px 32px",
+      },
+      fontSize: {
+        small: "14px",
+        medium: "16px",
+        large: "18px",
       },
     },
-    fontFamily: `"Poppins", sans-serif`,
   },
   components: {
-    MuiListItemText: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          ...theme.typography.recipeSteps,
-        }),
-      },
-    },
-    MuiListItemIcon: {
-      styleOverrides: {
-        root: ({ theme }) => ({
-          ...theme.typography.stepsCounter,
-        }),
-      },
-    },
-    MuiDivider: {
-      variants: [
-        {
-          props: { variant: "custom" },
-          style: {
-            borderColor: "#8f5a3c",
-            borderWidth: "1px",
-            borderStyle: "solid",
-            marginBottom: "16px",
-          },
-        },
-      ],
-    },
-    MuiTextField: {
+    MuiButton: {
       styleOverrides: {
         root: {
-          "& .MuiOutlinedInput-root": {
-            backgroundColor: "#f5ece1", // Set background color
-            "&.Mui-disabled": {
-              backgroundColor: "#e7d9c4", // Lighter background for disabled
-            },
-            "& fieldset": {
-              borderColor: "#d4c4a8", // Border color for normal state
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "#4b2e1c", // Border color when focused
-            },
-          },
+          color: baseTheme.palette.primary.contrastText,
+        },
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: "none",
+        },
+      },
+    },
+    MuiListItemText: {
+      styleOverrides: {
+        primary: {
+          fontWeight: 500,
+        },
+        secondary: {
+          fontSize: "14px",
+          color: "#757575",
         },
       },
     },

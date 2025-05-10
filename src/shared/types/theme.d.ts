@@ -1,7 +1,7 @@
 import "@mui/material/styles";
 import "@mui/material/Typography";
-import { PropTypes } from "@mui/material";
 import Color = PropTypes.Color;
+import PropTypes from "prop-types";
 
 type ColorPartial = Partial<Color>;
 
@@ -33,12 +33,8 @@ declare module "@mui/material/Typography" {
 
 declare module "@mui/material/" {
   export interface Palette {
-    customGrey: Record<number, string>;
     primary: Record<number, string>;
     secondary: Record<number, string>;
-    green: Record<number, string>;
-    grey: Record<number, string>;
-    yellow: Record<number, string>;
   }
 
   export interface Color {
@@ -46,12 +42,9 @@ declare module "@mui/material/" {
   }
 
   export interface PaletteColor {
-    customGrey: Record<number, string>;
     primary: Record<number, string>;
     secondary: Record<number, string>;
-    green: Record<number, string>;
-    grey: Record<number, string>;
-    yellow: Record<number, string>;
+    background: Record<number, string>;
   }
 
   export interface InputBasePropsSizeOverrides {
@@ -60,14 +53,6 @@ declare module "@mui/material/" {
 }
 
 declare module "@mui/material/styles" {
-  interface TypographyVariants {
-    label: React.CSSProperties;
-  }
-
-  interface TypographyVariantsOptions {
-    label?: React.CSSProperties;
-  }
-
   interface Theme {
     variables: {
       sidebarWidth: string;
@@ -85,7 +70,7 @@ declare module "@mui/material/styles" {
   }
   // allow configuration using `createTheme`
   interface ThemeOptions {
-    variables: {
+    variables?: {
       sidebarWidth: string;
       headerHeight: string;
       input: {
@@ -94,6 +79,7 @@ declare module "@mui/material/styles" {
       };
       button: {
         height: Record<string, string | number>;
+        padding: Record<string, string | number>;
         fontSize: Record<string, string | number>;
       };
     };
@@ -131,21 +117,7 @@ declare module "@mui/material/styles" {
   interface Palette {
     primary: Record<number, string>;
     secondary: Record<number, string>;
-  }
-}
-
-declare module "@mui/material/Button" {
-  export interface ButtonPropsSizeOverrides {
-    xLarge: true;
-  }
-  export interface ButtonPropsVariantOverrides {
-    "outlined-secondary": true;
-  }
-}
-
-declare module "@mui/material/TextField" {
-  interface TextFieldPropsSizeOverrides {
-    large: true;
+    background: Record<number, string>;
   }
 }
 
@@ -155,6 +127,14 @@ declare module "@mui/material/styles/createPalette" {
     light?: string;
     main: string;
     dark?: string;
+    darker?: string;
     contrastText?: string;
+  }
+}
+
+declare module "@mui/material/Paper" {
+  interface PaperPropsVariantOverrides {
+    thinBorder: true;
+    thickBorder: true;
   }
 }
